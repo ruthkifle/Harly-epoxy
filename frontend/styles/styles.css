@@ -1,0 +1,30 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --green: #0c4526;
+    --beige: #f8e5b3;
+    --gold: #ffea00;
+    --white: #ffffff;
+}
+
+body{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background: var(--beige);
+    color: #333;
+    line-height: 1.6;
+}
+
+.hero-section{
+   background-image: url("C:\Users\afomi\Harly-epoxy\frontend\images\hero-image.jpg");
+   color: var(--white);
+   padding: 70px 20px;
+   text-align: center;
+   border-bottom-left-radius: 40px;
+   border-bottom-right-radius: 40px;
+}
+
+
