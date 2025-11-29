@@ -1,5 +1,6 @@
 *{
     margin: 0;
+    width: 100%;
     padding: 0;
     box-sizing: border-box;
     object-fit: cover;
@@ -29,6 +30,12 @@ body{
     margin: 20px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+.featured-products .description {
+  max-width: 800px;
+  text-align: center;
+  margin: auto;
+  line-height: 1.6;
+}
 .product-grid {
     display: grid;
     grid-template-columns: repeat(3,1fr);
@@ -36,6 +43,10 @@ body{
     padding: 40px;
 }
 .product-card {
-    border-radius: 20px;
-
+    border-radius: 15px;
+    text-align: center;
+}
+.product-card img {
+    height: 300px;
+    border-radius: 25px;
 }
