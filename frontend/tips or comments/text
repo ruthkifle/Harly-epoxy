@@ -1,0 +1,24 @@
+/*To make your website fully responsive, you need to add a media query so that the grid changes on smaller screens.
+
+Right now:
+
+3 per row = perfect on laptop
+But on a phone 3 per row = too tight
+
+So we add:
+
+Tablet layout → 2 per row
+Phone layout → 1 per row */
+/* Tablet (max-width 900px) */
+@media (max-width: 900px) {
+  .products {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile (max-width 600px) */
+@media (max-width: 600px) {
+  .products {
+    grid-template-columns: 1fr;
+  }
+}

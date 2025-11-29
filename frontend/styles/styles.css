@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    object-fit: cover;
 }
 
 :root{
@@ -13,18 +14,28 @@
 
 body{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    background: var(--beige);
+    background: #ffffff;
     color: #333;
     line-height: 1.6;
 }
 
 .hero-section{
-   background-image: url("C:\Users\afomi\Harly-epoxy\frontend\images\hero-image.jpg");
-   color: var(--white);
+   background-image: url("../images/hero-image.jpg");
    padding: 70px 20px;
    text-align: center;
-   border-bottom-left-radius: 40px;
-   border-bottom-right-radius: 40px;
 }
+.featured-products .text {
+    text-align: center;
+    margin: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 20px;
+    padding: 40px;
+}
+.product-card {
+    border-radius: 20px;
 
-
+}
