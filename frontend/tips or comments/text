@@ -1,5 +1,5 @@
-/*To make your website fully responsive, you need to add a media query so that the grid changes on smaller screens.
-
+Responsiveness for the pic grid
+To make your website fully responsive, you need to add a media query so that the grid changes on smaller screens.
 Right now:
 
 3 per row = perfect on laptop
@@ -21,12 +21,10 @@ Phone layout → 1 per row */
   .products {
     grid-template-columns: 1fr;
   }
-<<<<<<< HEAD
-}
-======
+
 }
 /* dont forget to add fb link for now ye tg new yegebaw*/
->>>>>>> 614fb540076c0dc363fad5e096b3a719411f159c
+
 responsiveness of the hamburger button
 /* 📱 On small screens */
 @media (max-width: 768px) {
