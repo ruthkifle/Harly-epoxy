@@ -28,7 +28,6 @@ body{
 .featured-products .text {
     text-align: center;
     margin: 20px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 .featured-products .description {
   max-width: 800px;

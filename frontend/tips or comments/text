@@ -21,4 +21,9 @@ Phone layout → 1 per row */
   .products {
     grid-template-columns: 1fr;
   }
+<<<<<<< HEAD
 }
+=======
+}
+/* dont forget to add fb link for now ye tg new yegebaw*/
+>>>>>>> 614fb540076c0dc363fad5e096b3a719411f159c
