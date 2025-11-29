@@ -23,7 +23,34 @@ Phone layout → 1 per row */
   }
 <<<<<<< HEAD
 }
-=======
+======
 }
 /* dont forget to add fb link for now ye tg new yegebaw*/
 >>>>>>> 614fb540076c0dc363fad5e096b3a719411f159c
+responsiveness of the hamburger button
+/* 📱 On small screens */
+@media (max-width: 768px) {
+  /* hide the links by default on small screens */
+  .nav-links {
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    background: white;
+    flex-direction: column;
+    gap: 16px;
+    padding: 15px 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    display: none;          /* hidden until we open it with JS */
+  }
+
+  /* show the links when we add the .open class from JS */
+  .nav-links.open {
+    display: flex;
+  }
+
+  /* show the hamburger on small screens */
+  .menu-toggle {
+    display: block;
+  }
+}
