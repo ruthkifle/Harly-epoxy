@@ -22,3 +22,4 @@ Phone layout → 1 per row */
     grid-template-columns: 1fr;
   }
 }
+/* dont forget to add fb link for now ye tg new yegebaw*/
