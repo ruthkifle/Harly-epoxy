@@ -3,7 +3,7 @@
       <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="../styles/styles.css">
-        <title>Harly Resins/catalog</title>
+        <title>Harly Resins/product</title>
     </head>
     <header class="header">
         <div class="logo">HARLY</div>
@@ -11,7 +11,17 @@
         <nav class="navs">
             
             <a href="index.html">Home</a>
-            <a href="catalog.html">Products</a>
+            <div class="dropdown">
+                <a class="button">Products</a>
+                <div class="dropcontent">
+                    <a href="../html/catalog.html#keychain">Keychains</a>
+                    <a href="../html/catalog.html#bookmark">Bookmarks</a>
+                    <a href="../html/catalog.html#phonestand">Phonestands</a>
+                    <a href="../html/catalog.html#tray">Trays</a>
+                    <a href="../html/catalog.html#bead">Beads</a>
+                    <a href="../html/catalog.html#plate">Plates</a>
+                </div>
+            </div>
             <a href="about.html">About</a>
             <a href="contact.html">Contact</a>
         </nav>
@@ -37,26 +47,25 @@
 
         <div class="products">
             <section id="keychain" class="product-catagory"></section>
-            <h2>Keychains</h2>
-            <p class="prices">All kechains: 350 birr each.</p>
+                <h2>Keychains</h2>
+                <p class="prices">All keychains: 350 birr each.</p>
 
-            <div class="product-grid">
-                <div class="product-card">
-                    <img src="../images/keychain-many.jpg" alt="pink keychains">
-
-                    <div class="description">
-
-                        <h3>Pink Floral Keychain</h3>
-                        <p>Made using pink dried flowers and clear resin</p>
-                        <h4>Chain color options</h4>
-                    <ul>
-                        <li>Golden </li>
-                        <li>Silver</li>
-                    </ul>
+                <div class="product-grid">
+                    <div class="product-card">
+                        <img src="../images/keychain-many.jpg" alt="pink keychains">
+                        <div class="description">
+                            <h3>Pink Floral Keychain</h3>
+                            <p>Made using pink dried flowers and clear resin</p>
+                            <h4>Chain color options</h4>
+                            <ul>
+                                <li>Golden </li>
+                                <li>Silver</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-            </div>
             </section>
+
             <section id="bookmark" class="product-catagory">
                 <h2>Bookmarks</h2>
                 <p class="prices">All bookmark: 350 birr each.</p>
@@ -126,6 +135,7 @@
                     </div>
                 </div>
             </section>
+        <script src="../javascript/script.js"></script>
     </body>
 
 </html>
