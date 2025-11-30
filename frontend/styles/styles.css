@@ -54,6 +54,9 @@ body{
     color: #cba86b;
 
 }
+.dropdown {
+    position: relative;
+}
 .hero-section{
    background-image: url("../images/hero-image.jpg");
    padding: 70px 20px;
