@@ -55,6 +55,10 @@ body{
     color: #cba86b;
 
 }
+.navs a:active {
+    color: #cba86b;
+    font-weight: 600;
+}
 .dropdown {
     position: relative;
 }
@@ -104,6 +108,16 @@ body{
     gap: 20px;
     padding: 40px;
 }
+@media (max-width: 900px) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 600px) {
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+}
 .product-card {
     border-radius: 15px;
     text-align: center;
@@ -118,16 +132,9 @@ body{
     transform: scale(1.05);
     filter: brightness(80%);
 }
-@media (max-width: 900px) {
-  .products {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-@media (max-width: 600px) {
-  .products {
-    grid-template-columns: 1fr;
-  }
-
+ul, ol {
+    list-style: revert;
+    margin-left: 20px;
 }
 .about-page {
     max-width: 1200px;
