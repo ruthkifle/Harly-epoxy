@@ -156,7 +156,6 @@ body{
 }
 ul, ol {
     list-style: revert;
-    margin-left: 20px;
 }
 .about-page {
     max-width: 1200px;
