@@ -82,7 +82,7 @@ body{
     font-weight: 600;
 }
 
-.info-cards {
+.info-cards{
     display: flex;
     justify-content: center;
     gap: 25px;
@@ -90,7 +90,7 @@ body{
     flex-wrap: wrap;
 }
 
-.card {
+.card, .faq-section{
     display: flex;
     gap: 20px;
     justify-content: center;
@@ -98,7 +98,7 @@ body{
     flex-wrap: wrap;
     padding: 20px 0;
 }
-.card-element {
+.card-element, .faq-cards {
     width: 250px;
     min-height: 120px;
     background: #ffffff;
@@ -110,7 +110,7 @@ body{
     border: 1px solid var(--green);
 }
 
-.card-element:hover {
+.card-element, .faq-cards:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 20px rgba(0,0,0,0.2);
     border-color: #bfa76d; 
