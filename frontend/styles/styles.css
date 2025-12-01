@@ -163,12 +163,13 @@ ul, ol {
     padding: 20px;
 }
 
-.page-footer {
+footer.page-footer {
+    display: flex;
     background-color: var(--green);
     color: var(--white);
     text-align: center;
     padding: 15px 0;
-    position-anchor: bottom;
+    position: relative;
     bottom: 0;
     width: 100%;
     margin-top: 20px;
@@ -215,6 +216,12 @@ ul, ol {
 .contact-icons img:hover {
   transform: scale(1.15);
   filter: none; 
+}
+
+.faq-section h3:hover {
+    background: #fffdf8; 
+    transform: translateX(5px); 
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
 }
 
 
