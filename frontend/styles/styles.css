@@ -24,13 +24,35 @@
     align-items: center;
     box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
+
+.hero-section h1{
+    font-family: Playfair Display, serif;
+    color: black
+}
+
+body h1{
+    font-family: Playfair Display, serif;
+    color: var(--green);
+    margin-bottom: 15px;
+    text-align: center;
+    margin-top: 15px;
+}
+
 body{
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: 'Avenir', sans-serif;
     background: #ffffff;
     color: #333;
     line-height: 1.6;
+    text-align: center;
 }
+
+@font-face {
+    font-family: 'HarlyFont';
+    src: url('../fonts/sunroll/Sunroll.ttf') format('truetype');
+}
+
 .logo{
+    font-family: 'HarlyFont';
     font-size: 26px;
     text-align: left;
 }
