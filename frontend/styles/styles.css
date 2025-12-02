@@ -71,7 +71,7 @@ body{
 .navs a{
     text-decoration: none;
     color: #1e3a2b;
-    font-weight: 500;
+    font-weight: 700;
     font-size: 0.95rem;
 }
 .navs a:hover {
@@ -273,7 +273,7 @@ ul, ol {
 footer.page-footer {
     display: flex;
     background-color: var(--green);
-    color: var(--white);
+    color: var(--beige);
     text-align: center;
     padding: 15px 0;
     position: relative;
@@ -328,6 +328,29 @@ footer.page-footer {
 .faq-section h3:hover { 
     box-shadow: 0 3px 10px rgba(0,0,0,0.1);
     cursor: pointer;
+}
+
+.back-to-top {
+    position: sticky;
+    bottom: 30px;
+    background-color: var(--green);
+    color: var(--beige);
+    width: 45px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 15px;
+    border-radius: 50%;
+    text-decoration: none;
+    font-size: 18px;
+    opacity: 0.7;
+    transition: 0.3s ease, ;
+}
+
+.back-to-top:hover {
+    opacity: 1;
+    transform: translateY(-3px);
 }
 
 
