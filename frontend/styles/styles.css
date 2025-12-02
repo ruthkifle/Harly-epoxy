@@ -201,7 +201,7 @@ body.section-kitchenware.handle {
     padding: 8px 0;
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    z-index: 100;
+    z-index: 1;
 }
 .dropcontent.show {
     display: block;
@@ -333,6 +333,7 @@ footer.page-footer {
 .back-to-top {
     position: sticky;
     bottom: 30px;
+    right: 20px;
     background-color: var(--green);
     color: var(--beige);
     width: 45px;
