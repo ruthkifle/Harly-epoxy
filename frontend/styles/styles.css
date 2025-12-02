@@ -16,6 +16,7 @@
 .header {
     position: sticky;
     top: 0;
+    height: 70px;
     z-index: 100;
     background: white;
     padding: 15px 40px;
@@ -80,6 +81,68 @@ body{
 .navs a:active {
     color: #cba86b;
     font-weight: 600;
+}
+.choices {
+    position: sticky;
+    top: 70px;
+    background: white;
+    padding: 6px 20px;
+    z-index: 1000;
+}
+.drop2 {
+    display: flex;
+    gap: 8px;
+    border-radius: 12px;
+}
+.choices button {
+    color: var(--beige);
+    background: var(--green);
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+}
+.choices button:hover {
+    background: var(--beige);
+    color: var(--green);
+}
+.color, .flake, .glitter, .chain, .tassle, .handle {
+    display: inline-block;
+}
+body.section-keychain {
+  outline: 3px solid hotpink;
+}
+body.section-bookmark.tassle {
+  display: inline-block;
+}
+body.section-kitchenware.handle {
+  display: inline-block;
+}
+.dd {
+  position: relative;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 110%;
+  left: 0;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid #d6c28e;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  min-width: 160px;
+  z-index: 1000;
+  list-style: none;
+  padding: 8px 0;
+  animation: fadeIn 0.2s ease-in-out;
+}
+.dropdown-content li {
+  padding: 8px 12px;
+  cursor: pointer;
+  color: #333;
+}
+.dd.active .dropdown-content {
+  display: block;
 }
 
 .info-cards{
