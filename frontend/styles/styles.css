@@ -109,15 +109,6 @@ body{
 .color, .flake, .glitter, .chain, .tassle, .handle {
     display: inline-block;
 }
-body.section-keychain {
-  outline: 3px solid hotpink;
-}
-body.section-bookmark.tassle {
-  display: inline-block;
-}
-body.section-kitchenware.handle {
-  display: inline-block;
-}
 .dd {
   position: relative;
 }
@@ -234,8 +225,10 @@ body.section-kitchenware.handle {
 .product-grid {
     display: grid;
     grid-template-columns: repeat(4,1fr);
-    gap: 20px;
-    padding: 40px;
+    gap: 16px;
+    justify-items: center;
+    align-items: start;
+    padding: 20px;
 }
 @media (max-width: 900px) {
   .product-grid {
@@ -249,12 +242,15 @@ body.section-kitchenware.handle {
 }
 .product-card {
     border-radius: 15px;
+    max-width: 300px;
     text-align: center;
     overflow: hidden;
+    height: auto;
 }
 .product-card img {
-    height: 300px;
-    border-radius: 25px;
+    height: 350px;
+    border-radius: 15px;
+    object-fit: contain;
     transition: transform 0.3s ease, filter 0.3s ease;
 }
 .product-card :hover img {

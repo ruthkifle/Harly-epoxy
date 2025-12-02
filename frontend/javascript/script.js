@@ -10,65 +10,6 @@ document.addEventListener('click', (e) => {
     }
 });
 
-// find all product sections
-// const sections = document.querySelectorAll('.cat-sec');
-// const body = document.body;
-
-// // watch which section is visible
-// const observer = new IntersectionObserver(
-//   entries => {
-//     entries.forEach(entry => {
-//       if (entry.isIntersecting) {
-//         const name = entry.target.dataset.section;
-//         body.setAttribute('data-active-section', name);
-//       }
-//     });
-//   },
-//   {
-//     threshold: 0.4 // ~40% of section in view
-//   }
-// );
-
-// // start observing each section
-// sections.forEach(section => observer.observe(section));
-
-// document.addEventListener("DOMContentLoaded", () => {
-//   const body = document.body;
-
-//   // All your category sections
-//   const sections = document.querySelectorAll(".cat-sec");
-
-//   function setBodySection(sectionName) {
-//     // remove any old "section-*" classes
-//     body.className = body.className
-//       .split(" ")
-//       .filter(c => !c.startsWith("section-"))
-//       .join(" ")
-//       .trim();
-
-//     // add the new one if provided
-//     if (sectionName) {
-//       body.classList.add(`section-${sectionName}`);
-//     }
-//   }
-
-//   const observer = new IntersectionObserver(
-//     (entries) => {
-//       entries.forEach(entry => {
-//         if (entry.isIntersecting) {
-//           const name = entry.target.dataset.section; // "keychain", "bookmark", etc.
-//           setBodySection(name);
-//         }
-//       });
-//     },
-//     {
-//       threshold: 0.4 // 40% of section visible = "active"
-//     }
-//   );
-
-//   sections.forEach(section => observer.observe(section));
-// });
-
 document.addEventListener("DOMContentLoaded", () => {
   const dropdowns = document.querySelectorAll(".dd");
 
@@ -76,13 +17,21 @@ document.addEventListener("DOMContentLoaded", () => {
     const button = drop.querySelector(".db");
 
     button.addEventListener("click", (e) => {
-      e.stopPropagation(); // stop click from closing instantly
+      e.stopPropagation(); // prevent from triggering window click
+
+      // 1️⃣ Close all other dropdowns first
+      dropdowns.forEach(d => {
+        if (d !== drop) d.classList.remove("active");
+      });
+
+      // 2️⃣ Toggle the clicked one
       drop.classList.toggle("active");
     });
   });
 
-  // close all if clicked elsewhere
+  // 3️⃣ Close all if clicking outside any dropdown
   document.addEventListener("click", () => {
     dropdowns.forEach(drop => drop.classList.remove("active"));
   });
 });
+
