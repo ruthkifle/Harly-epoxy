@@ -17,7 +17,7 @@
     position: sticky;
     top: 0;
     height: 70px;
-    z-index: 100;
+    z-index: 2000;
     background: white;
     padding: 15px 40px;
     display: flex;
@@ -84,7 +84,7 @@ body{
 }
 .choices {
     position: sticky;
-    top: 70px;
+    top: 75px;
     background: white;
     padding: 6px 20px;
     z-index: 1000;
@@ -124,7 +124,7 @@ body{
   min-width: 160px;
   z-index: 1000;
   list-style: none;
-  padding: 8px 0;
+  padding: 4px 0;
   animation: fadeIn 0.2s ease-in-out;
 }
 .dropdown-content li {
