@@ -19,17 +19,17 @@ document.addEventListener("DOMContentLoaded", () => {
     button.addEventListener("click", (e) => {
       e.stopPropagation(); // prevent from triggering window click
 
-      // 1️⃣ Close all other dropdowns first
+      // Close all other dropdowns first
       dropdowns.forEach(d => {
         if (d !== drop) d.classList.remove("active");
       });
 
-      // 2️⃣ Toggle the clicked one
+      // Toggle the clicked one
       drop.classList.toggle("active");
     });
   });
 
-  // 3️⃣ Close all if clicking outside any dropdown
+  // Close all if clicking outside any dropdown
   document.addEventListener("click", () => {
     dropdowns.forEach(drop => drop.classList.remove("active"));
   });
