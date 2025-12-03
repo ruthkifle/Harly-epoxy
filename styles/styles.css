@@ -91,6 +91,22 @@ body{
     width: 100%;
     z-index: 1000;
 }
+@media (max-width: 768px) {
+  .drop2 {
+    flex-wrap: wrap;      
+    justify-content: center;
+  }
+
+  .choices {
+    padding: 10px;     
+  }
+
+  .choices button {
+    flex: 1 1 45%
+    margin: 4px 0;
+  }
+}
+
 .drop2 {
     display: flex;
     gap: 8px;
