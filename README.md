@@ -1,1 +1,0 @@
-# Harly-epoxy

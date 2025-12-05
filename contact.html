@@ -9,14 +9,22 @@
     
     <body>
 
+        <!--header class containing logo, menu button and navigation links-->
         <header class="header">
 
+        <!--brand logo-->
         <div class="logo">HARLY</div>
+
+        <!--menu button for smaller screens-->
         <button class="menu" id="menu-toggle">☰</button>
         
+
+        <!--navigation bar with links and dropdown menu-->
         <nav class="navs" id="nav-links">
             
             <a href="index.html">Home</a>
+
+            <!--dropdown menu for product categories-->
             <div class="dropdown">
                 <a class="button">Products</a>
                 <div class="dropcontent">
@@ -32,6 +40,7 @@
         </nav>
     </header>
 
+        <!--hero section with a banner displaying page title and description-->
         <section class="hero-section">
 
             <h1>Contact Us</h1>
@@ -39,42 +48,53 @@
 
         </section> 
        
+        <!--main class for all contact info-->
         <div class="contact-info">
             <h1>Get in Touch</h1>
             <p>If you have any questions, feedback, or inquiries about our products, feel free to reach out to us through the following channels:</p>
     
+            <!-- links to socials and email -->
+                <h4>Call us: <a href="tel:0988173131">+251 988-173131</a></h4>
                 <h4>Telegram: <a href="https://t.me/harly_resins">t.me/harly_resins</a></h4>
                 <h4>Instagram: <a href="https://www.instagram.com/harly_resin/profile">www.instagram.com/harly_resin/</a></h4>
                 <h4>Facebook: <a href="https://www.facebook.com/share/17htsbuqjS/">www.facebook.com/harlyresins</a></h4>
                 <h4>Tiktok: <a href="https://www.tiktok.com/@harly_resinart?_t=8qmjDKBlhG1&_r=1">www.tiktok.com/@harly_resinart</a></h4>
-                <h4>Call us: <a href="tel:0988173131">+251 988-173131</a></h4>
                 <h4>SMS: <a href="sms:0988173131">+251 988-173131</a></h4>
+                <h4>Email Us: <a href="mailto:harlyresins@gmail.com">harlyresins@gmail.com</a></h4>
             
 
             <h1>Frequently Asked Questions</h1>
+
+            <!--FAQ section showing frequently asked questions and answers in card form-->
             <div class="faq-section">
 
+                <!--single faq card-->
                 <div class="faq-cards"><h3>Q: Do you take custom orders?</h3>
                 <p>Yes, we do! You can customize colors, styles, and details to create a unique piece just for you.</p>
                 </div>
 
+                <!--single faq card-->
                 <div class="faq-cards"><h3>Q: How long does it take to finish an order?</h3>
                 <p>Most custom pieces take 3-5 business days to make, since every resin piece needs time to cure properly.</p>
                 </div>
 
+                <!--single faq card-->
                 <div class="faq-cards"><h3>Q: What payment methods do you accept?</h3>
                 <p>We accept payments via bank transfer, Telebirr, and cash on delivery.</p>
                 </div>
 
+                <!--single faq card-->
                 <div class="faq-cards"><h3>Q: Do you offer delivery?</h3>
                 <p>Yes, we offer delivery within some areas. Delivery fees may apply based on your location.</p>
                 </div>
 
+                <!--single faq card-->
                 <div class="faq-cards"><h3>Q: Do you accept urgent orders?</h3>
                 <p>We try our best to accommodate urgent requests. But resin needs time to cure, so urgent orders depend on the
                      design. Message us to check availability.</p>
                 </div>
 
+                <!--single faq card-->
                 <div class="faq-cards">
                 <h3>Q: Do I need to make a prepayment to confirm my order?</h3>
                 <p>Yes, we require a 50% prepayment to start working on your custom order. 
@@ -84,17 +104,22 @@
             </div>
         </div>
    
+        <!--main class for the contact form -->
         <section class="custom-order">
-        <h2>Send Us Your Comments</h2>
+        <h2>Place an Order or Send Us Your Comments</h2>
 
-  <form action="https://formsubmit.co/afomiakebede380@gmail.com" method="POST" class="order-form">
+        <!--link to FormSubmit service to automatically send entries to email-->
+  <form action="https://formsubmit.co/harlyresins@gmail.com" method="POST" class="order-form">
 
+    <!--prompts users to enter their full name-->
     <label for="name">Enter Your Name</label>
     <input type="text" id="name" name="name" required>
 
+    <!--prompts users to add their phone number for later contact-->
     <label for="phone">Phone Number</label>
     <input type="tel" id="phone" name="phone" required>
 
+    <!--product type selection-->
     <label for="product">What product would you like?</label>
     <select id="product" name="product" required>
       <option value="">-- Select a Product --</option>
@@ -102,24 +127,29 @@
       <option value="bookmark">Bookmark</option>
       <option value="tray">Tray</option>
       <option value="phone-stand">Phone Stand</option>
-      <option value="custom">Custom Design</option>
+      <option value="custom">Other</option>
     </select>
 
-    <label for="details">Design Details</label>
-    <textarea id="details" name="details" rows="5" placeholder="Colors, glitter, flowers, letters… let us know all the details" required></textarea>
+    <!--text area where users add details of customization-->
+    <label for="details">Design Details or comments </label>
+    <textarea id="details" name="details" rows="5" placeholder="Add your customization details or comments here..." required></textarea>
 
+    <!--optional file upload for reference images-->
     <label for="file">Upload Reference Image (optional)</label>
     <input type="file" id="file" name="file" accept="image/*">
 
+    <!--notice to inform customers that prepayment is required-->
     <p class="prepay-note"><strong>Note:</strong> A 50% prepayment is required to confirm your order.</p>
 
-    <button type="submit">Submit Order</button>
+    <!--submit button to send the form data-->
+    <button type="submit">Send Email</button>
   </form>
 </section>
 
-        
+        <!--js link for interactive menu dropdowns and more-->
         <script src="javascript/script.js"></script>
     
+        <!--footer section with copyright and bussiness info-->
          <footer class="page-footer">
         <p>© 2024 Harly Resins. Handmade in Addis Ababa. Open for orders 7 days a week.</p>
      </footer>

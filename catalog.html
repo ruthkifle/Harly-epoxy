@@ -7,9 +7,10 @@
         <title>Harly Resins/product</title>
     </head>
    
-    
+    <!--body section with id top to reference for back to top button-->
     <body id="top" class="catalog">
             
+        <!--header class with menus logo and navigation-->
         <header class="header">
         <div class="logo">HARLY</div>
         <button class="menu" id="menu-toggle">☰</button>
@@ -32,7 +33,7 @@
         </nav>
 
     </header>
-        
+        <!--hero section with page intro and subtitle-->
         <section class="hero-section">
 
             <h1>Product Catalog</h1>
@@ -40,6 +41,7 @@
 
         </section> 
 
+        <!--general description of products-->
         <div class="catalog-intro">
             <h1>Our Resin Collection</h1>
             <p>Explore our curated collection of handmade resin pieces,
@@ -51,8 +53,11 @@
             </p>
         </div>
 
+        <!--dropdown menu for color sorting options-->
         <nav class="choices">
             <div class="drop2">
+
+                <!--color choices dropdown-->
                 <div class="dd">
                 <button class="color db">Color ▾</button>
                     <ul class="dropdown-content">
@@ -66,6 +71,8 @@
                         <li>Purple</li>
                     </ul>
                 </div>
+
+                <!--flake color choices dropdown-->
                 <div class="dd">
                 <button class="flake db">Flake ▾</button>
                     <ul class="dropdown-content">
@@ -74,6 +81,7 @@
                     </ul>
                 </div>
 
+                <!-- glitter color choices dropdown-->
                 <div class="dd">
                 <button class="glitter db">Glitter ▾</button>
                     <ul class="dropdown-content">
@@ -83,6 +91,7 @@
                     </ul>
                 </div>
 
+                <!--chain color choices dropdown-->
                 <div class="dd">
                 <button class="chain db">Chain ▾</button>
                     <ul class="dropdown-content">
@@ -91,6 +100,7 @@
                     </ul>
                 </div>
 
+                <!--tassle color choices dropdown-->
                 <div class="dd">
                 <button class="tassle db">Tassle ▾</button>
                     <ul class="dropdown-content">
@@ -107,6 +117,7 @@
                     </ul>
                 </div>
 
+                <!--handle type dropdown-->
                 <div class="dd">
                 <button class="handle db">Handle ▾</button>
                     <ul class="dropdown-content">
@@ -118,12 +129,18 @@
             </div>
         </nav>
 
+        <!--products container-->
         <div class="products">
+
+            <!--keychains section-->
             <section id="keychain" class="cat-sec" data-section="keychain">
                 <h1>KEYCHAINS</h1>
                 <p class="prices">All keychains: 300 birr each.</p>
 
+                <!--grid catalog of keychains-->
                 <div class="product-grid">
+
+                    <!--each keychain is in one "product-card" class including product code and description-->
                     <div class="product-card">
                         <img src="images/Keychains/floral with flakes.jpg" alt="floral keychains">
                         <div class="description">
@@ -222,10 +239,15 @@
                 </div>
             </section>
 
+            <!--bookmarks section-->
             <section id="bookmark" class="cat-sec" data-section="bookmark">
                 <h1>BOOKMARKS</h1>
                 <p class="prices">All bookmark: 350 birr each.</p>
+
+                <!--grid catalog of bookmarks-->
                 <div class="product-grid">
+
+                    <!--each bookmark is in one "product-card" class including product code and description-->
                     <div class="product-card">
                         <img src="images/bookmarks/flakes.jpg" alt="bookmark">
                         <div class="description">
@@ -317,12 +339,15 @@
                 </div>
             </section>
 
-           
+           <!--phone stand section-->
             <section id="phonestand" class="cat-sec" data-section="phonestand">
                 <h1>PHONE STANDS</h1>
                 <p class="prices">All phonestands: 650 birr each.</p>
+
+                <!--grid catalog of phone stands-->
                 <div class="product-grid">
 
+                    <!--each phone stand is in one "product-card" class including product code and description-->
                     <div class="product-card">
                         <img src="images/phone stands/clear.jpg" alt="phonestand">
                         <div class="description">
@@ -433,11 +458,16 @@
                 </div>
             </section>
 
+            <!--kitchenware section-->
             <section id="kitchenware" class="cat-sec" data-section="kitchenware">
                 <h1>KITCHENWARE</h1>
                 <p class="prices">All tray: 1000-1200 birr each.</p>
                 <p class="prices">All plates: 500 birr each.</p>
+
+                <!--grid catalog of kitchenware-->
                 <div class="product-grid">
+
+                    <!--each kichenware item is in one "product-card" class including product code and description-->
                     <div class="product-card">
                         <img src="images/kitchenware/floral 2.jpg" alt="tray">
                         <div class="description">
@@ -538,9 +568,14 @@
                 </div>
             </section>
 
+            <!--other products section-->
             <section id="other" class="cat-sec" data-section="other">
                 <h1>Others</h1>
+
+                <!--grid catalog of other products-->
                 <div class="product-grid">
+
+                    <!--each item is in one "product-card" class including product code, price and description-->
                     <div class="product-card">
                         <img src="images/others/sent1.jpg" alt="beads">
                         <div class="description">
@@ -644,10 +679,13 @@
             </section>
         </div>
 
+        <!--link to external js file for dropdown and menu interactions-->
         <script src="javascript/script.js"></script>   
 
+        <!--back to top button-->
     <a href="#top" class="back-to-top">↑</a>
         
+    <!--footer section with copyright and business info-->
     <footer class="page-footer">
         <p>© 2024 Harly Resins. Handmade in Addis Ababa. Open for orders 7 days a week.</p>
     </footer>
