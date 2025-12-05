@@ -76,21 +76,24 @@ document.addEventListener("DOMContentLoaded", () => {
   const productDropdown = document.querySelector(".dropdown");
   const productButton = productDropdown?.querySelector(".button");
   const productMenu = productDropdown?.querySelector(".dropcontent");
+  const navLinks = document.querySelector(".navs"); // 🔥 so we can also close the menu
 
   if (productButton && productMenu) {
+    // Toggle Products dropdown
     productButton.addEventListener("click", (e) => {
       e.stopPropagation();
       productMenu.classList.toggle("show");
     });
 
-    // Close when clicking an item
+    // Close when clicking a product item + hide hamburger
     productMenu.querySelectorAll("a").forEach(link => {
       link.addEventListener("click", () => {
         productMenu.classList.remove("show");
+        navLinks?.classList.remove("show"); // ✅ closes hamburger too
       });
     });
 
-    // Close when clicking outside (but not the hamburger)
+    // Close dropdown when clicking outside
     document.addEventListener("click", (e) => {
       if (
         !productDropdown.contains(e.target) &&
@@ -127,7 +130,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* === 3. HAMBURGER MENU (mobile nav) === */
   const menuButton = document.getElementById("menu-toggle");
-  const navLinks = document.querySelector(".navs");
 
   if (menuButton && navLinks) {
     menuButton.addEventListener("click", (e) => {
@@ -135,7 +137,7 @@ document.addEventListener("DOMContentLoaded", () => {
       navLinks.classList.toggle("show");
     });
 
-    // Close menu when clicking a nav link (but ignore Product button)
+    // Close when clicking non-product links
     navLinks.querySelectorAll("a").forEach(link => {
       link.addEventListener("click", (e) => {
         if (!e.target.closest(".dropdown")) {
@@ -144,7 +146,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
 
-    // Close menu when clicking outside nav or button (but not when using Product dropdown)
+    // Close if clicking outside
     document.addEventListener("click", (e) => {
       const clickedInside =
         e.target.closest(".navs") ||
