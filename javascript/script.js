@@ -1,82 +1,9 @@
-// document.addEventListener("DOMContentLoaded", () => {
-//   /* === 1. PRODUCT MENU DROPDOWN (top Products nav) === */
-//   const productDropdown = document.querySelector(".dropdown");
-//   const productButton = productDropdown?.querySelector(".button");
-//   const productMenu = productDropdown?.querySelector(".dropcontent");
-
-//   if (productButton && productMenu) {
-//     // Toggle dropdown
-//     productButton.addEventListener("click", (e) => {
-//       e.stopPropagation();
-//       productMenu.classList.toggle("show");
-//     });
-
-//     // Close when clicking a product link
-//     productMenu.querySelectorAll("a").forEach(link => {
-//       link.addEventListener("click", () => {
-//         productMenu.classList.remove("show");
-//       });
-//     });
-
-//     // Close when clicking outside the dropdown
-//     document.addEventListener("click", (e) => {
-//       if (!productDropdown.contains(e.target)) {
-//         productMenu.classList.remove("show");
-//       }
-//     });
-//   }
-
-//   /* === 2. COLOR / FLAKE / GLITTER / HANDLE DROPDOWNS === */
-//   const dropdowns = document.querySelectorAll(".dd");
-
-//   dropdowns.forEach(drop => {
-//     const button = drop.querySelector(".db");
-//     const options = drop.querySelectorAll(".dropdown-content li");
-
-//     button.addEventListener("click", (e) => {
-//       e.stopPropagation();
-
-//       // Close others
-//       dropdowns.forEach(d => {
-//         if (d !== drop) d.classList.remove("active");
-//       });
-
-//       // Toggle this one
-//       drop.classList.toggle("active");
-//     });
-
-//     // Close when selecting option
-//     options.forEach(option => {
-//       option.addEventListener("click", () => {
-//         drop.classList.remove("active");
-//       });
-//     });
-//   });
-
-//   /* === 3. HAMBURGER MENU (mobile nav) === */
-//   const menuButton = document.getElementById("menu-toggle");
-//   const navLinks = document.querySelector(".navs");
-
-//   if (menuButton && navLinks) {
-//     menuButton.addEventListener("click", (e) => {
-//       e.stopPropagation();
-//       navLinks.classList.toggle("show");
-//     });
-
-//     // Close hamburger if clicking outside nav or button
-//     document.addEventListener("click", (e) => {
-//       if (!e.target.closest(".navs") && !e.target.closest("#menu-toggle")) {
-//         navLinks.classList.remove("show");
-//       }
-//     });
-//   }
-// });
 document.addEventListener("DOMContentLoaded", () => {
-  /* === 1. PRODUCT MENU DROPDOWN (top Products nav) === */
+// PRODUCT MENU DROPDOWN (top Products nav)
   const productDropdown = document.querySelector(".dropdown");
   const productButton = productDropdown?.querySelector(".button");
   const productMenu = productDropdown?.querySelector(".dropcontent");
-  const navLinks = document.querySelector(".navs"); // 🔥 so we can also close the menu
+  const navLinks = document.querySelector(".navs");
 
   if (productButton && productMenu) {
     // Toggle Products dropdown
@@ -89,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
     productMenu.querySelectorAll("a").forEach(link => {
       link.addEventListener("click", () => {
         productMenu.classList.remove("show");
-        navLinks?.classList.remove("show"); // ✅ closes hamburger too
+        navLinks?.classList.remove("show");
       });
     });
 
@@ -104,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  /* === 2. COLOR / FLAKE / GLITTER / HANDLE DROPDOWNS === */
+  // COLOR / FLAKE / GLITTER / HANDLE DROPDOWNS
   const dropdowns = document.querySelectorAll(".dd");
 
   dropdowns.forEach(drop => {
@@ -128,7 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  /* === 3. HAMBURGER MENU (mobile nav) === */
+ // HAMBURGER MENU (mobile nav) 
   const menuButton = document.getElementById("menu-toggle");
 
   if (menuButton && navLinks) {
