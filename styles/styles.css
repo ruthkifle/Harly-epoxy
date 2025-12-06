@@ -560,7 +560,7 @@ footer.page-footer {
 }
 .order-form button {
   padding: 12px;
-  background-color: var(--beige); 
+  background-color: var(--green); 
   border: none;
   color: #fff;
   font-weight: bold;
@@ -569,7 +569,7 @@ footer.page-footer {
   transition: 0.3s;
 }
 .order-form button:hover {
-  background-color: var(--beige);
+  background-color: rgb(5, 106, 5);
 }
 .prepay-note {
   font-size: 13px;
