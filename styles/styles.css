@@ -432,7 +432,7 @@ ul, ol {
     justify-content: center;
     gap: 25px;
     padding: 40px 20px;
-    flex-wrap: wrap;
+    flex-direction: column;
 }
 .card, .faq-section{
     display: flex;
@@ -459,10 +459,12 @@ ul, ol {
     border-color: #bfa76d;
     cursor: pointer; 
 }
-.info-cards .description {
+.info-cards .description, .h1 {
     margin-top: 10px;
     font-size: 20px;
     line-height: 1.4;
+    text-align: center;
+    justify-content: center;
 }
 
 
@@ -535,7 +537,7 @@ footer.page-footer {
 }
 .custom-order h2 {
   text-align: center;
-  color: #003b2f;
+  color: var(--green);
   margin-bottom: 20px;
 }
 .order-form {
@@ -545,7 +547,7 @@ footer.page-footer {
 }
 .order-form label {
   font-weight: 600;
-  color: #003b2f;
+  color: var(--green);
 }
 .order-form input,
 .order-form textarea,
@@ -558,7 +560,7 @@ footer.page-footer {
 }
 .order-form button {
   padding: 12px;
-  background-color: #ceb16f; /* golden beige */
+  background-color: var(--beige); 
   border: none;
   color: #fff;
   font-weight: bold;
@@ -567,7 +569,7 @@ footer.page-footer {
   transition: 0.3s;
 }
 .order-form button:hover {
-  background-color: #a98e55;
+  background-color: var(--beige);
 }
 .prepay-note {
   font-size: 13px;
