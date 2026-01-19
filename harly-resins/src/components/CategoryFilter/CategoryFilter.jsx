@@ -1,28 +1,18 @@
-import React from "react";
 import "./CategoryFilter.css";
 
 export default function CategoryFilter({ selectedCategory, onCategoryChange }) {
-  const categories = [
-    { id: "all", label: "All" },
-    { id: "keychain", label: "Keychains" },
-    { id: "bookmark", label: "Bookmarks" },
-    { id: "phonestand", label: "Phone Stands" },
-    { id: "kitchenware", label: "Kitchenware" },
-    { id: "other", label: "Others" }
-  ];
-
   return (
-    <div className="category-filter">
-      {categories.map((cat) => (
-        <button
-          key={cat.id}
-          className={`filter-btn ${selectedCategory === cat.id ? "active" : ""}`}
-          onClick={() => onCategoryChange(cat.id)}
-        >
-          {cat.label}
-        </button>
-      ))}
-    </div>
+    <nav className="choices">
+      <div className="drop2">
+
+        <button onClick={() => onCategoryChange("all")}>All</button>
+        <button onClick={() => onCategoryChange("keychain")}>Keychains</button>
+        <button onClick={() => onCategoryChange("bookmark")}>Bookmarks</button>
+        <button onClick={() => onCategoryChange("phonestand")}>Phone Stands</button>
+        <button onClick={() => onCategoryChange("kitchenware")}>Kitchenware</button>
+        <button onClick={() => onCategoryChange("other")}>Others</button>
+
+      </div>
+    </nav>
   );
 }
-

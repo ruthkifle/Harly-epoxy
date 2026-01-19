@@ -16,6 +16,10 @@
     font-size: 26px;
     color: var(--primary-green);
 }
+.navs {
+    display: flex;
+    gap: 24px;
+}
 
 .navs a,
 .dropdown-btn {
@@ -32,6 +36,9 @@
 .navs a:hover,
 .dropdown-btn:hover {
     color: var(--hover-gold);
+}
+.menu {
+    display: none;
 }
 
 @media (max-width: 768px) {

@@ -1,22 +1,19 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import './styles/variables.css';
-import './styles/global.css';
+import "./styles/variables.css";
+import "./styles/global.css";
 
-import Header from "./components/Hero/Hero";
-import Footer from "./components/Footer/Footer";
 import Navbar from "./components/Navbar/Navbar";
-import CategoryFilter from "./components/CategoryFilter/CategoryFilter";
+import Footer from "./components/Footer/Footer";
 
 import Home from "./pages/Home";
 import Catalog from "./pages/Catalog";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 
-function App() {
+export default function App() {
   return (
-    <Router>
-      <Header />
+    <BrowserRouter>
       <Navbar />
 
       <main className="page-wrapper">
@@ -29,9 +26,6 @@ function App() {
       </main>
 
       <Footer />
-    </Router>
+    </BrowserRouter>
   );
 }
-
-export default App;
-
