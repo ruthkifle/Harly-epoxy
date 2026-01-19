@@ -13,7 +13,7 @@ import Contact from "./pages/Contact";
 
 function App() {
   return (
-    <BrowserRouter>
+    <Router>
       <Navbar />
 
       <main className="page-wrapper">
@@ -26,7 +26,7 @@ function App() {
       </main>
 
       <Footer />
-    </BrowserRouter>
+    </Router>
   );
 };
 

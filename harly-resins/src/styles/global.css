@@ -77,3 +77,76 @@ h3 {
 .fadeIn {
     animation: fadeIn 0.5s ease-in-out;
 }
+
+.hero-section {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+        url('../assets/images/');
+    /* Ensure path is correct */
+    background-size: cover;
+    background-position: center;
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    text-align: center;
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    color: var(--primary-beige);
+    /* Using your semantic variable! */
+}
+
+.custom-order {
+    margin: 40px auto;
+    max-width: 600px;
+    background: var(--white);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: var(--shadow-medium);
+}
+
+.order-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    text-align: left;
+}
+
+.order-form label {
+    font-weight: 600;
+    color: var(--primary-green);
+}
+
+.order-form input,
+.order-form textarea,
+.order-form select {
+    padding: 12px;
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    font-size: 14px;
+    background: var(--bg-note);
+    transition: border-color 0.3s ease;
+}
+
+.order-form input:focus {
+    outline: none;
+    border-color: var(--primary-green);
+}
+
+.order-form button {
+    padding: 14px;
+    background-color: var(--primary-green);
+    border: none;
+    color: var(--primary-beige);
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.order-form button:hover {
+    background-color: var(--btn-hover);
+    transform: translateY(-2px);
+}
