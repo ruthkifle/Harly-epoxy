@@ -1,21 +1,15 @@
-import './ProductCard.css';
+import "./ProductCard.css";
 
-const ProductCard = ({ image, name, price, category }) => {
+export default function ProductCard({ product }) {
   return (
-    <div className='product-card fade-in'>
-      <div className='product-image-container'>
-        <img src={image} alt={name} loading="lazy" />
-        <div className='product-overlay'>
-          <span>View Details</span>
-        </div>
-      </div>
-      <div className='product-info'>
-        <span className='product-category'>{category}</span>
-        <h3>{name}</h3>
-        <p className='product-price'>{price}</p>
+    <div className="product-card">
+      <img src={product.image} alt={product.alt} />
+
+      <div className="description">
+        <h3>{product.code}</h3>
+        <p>{product.description}</p>
+        {product.price && <h4>{product.price}</h4>}
       </div>
     </div>
   );
-};
-
-export default ProductCard;
+}

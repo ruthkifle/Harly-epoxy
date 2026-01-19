@@ -1,23 +1,20 @@
 export default [
   {
-    id: 1,
+    id: "HRK01",
     name: "Floral Keychain",
+    description: "Multicolored dried flowers and clear resin",
     category: "keychain",
     price: 300,
-    image: "/images/keychains/floral.jpg"
+    image: "/images/Keychains/floral with flakes.jpg"
   },
   {
-    id: 2,
-    name: "Golden Bookmark",
-    category: "bookmark",
-    price: 350,
-    image: "/images/bookmarks/golden.jpg"
+    id: "HRK02",
+    name: "Black & Gold Keychain",
+    description: "Colors and golden flakes",
+    category: "keychain",
+    price: 300,
+    image: "/images/Keychains/Black & Golden.jpg"
   },
-  {
-    id: 3,
-    name: "Pink Phone Stand",
-    category: "phonestand",
-    price: 1200,
-    image: "/images/phonestands/pink.jpg"
-  }
+
+  // ADD ALL OTHER PRODUCTS HERE FOLLOWING THE SAME FORMAT
 ];
