@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import './styles/variables.css';
 import './styles/global.css';
@@ -16,7 +16,6 @@ import Contact from "./pages/Contact";
 function App() {
   return (
     <Router>
-      <Header />
       <Navbar />
 
       <main className="page-wrapper">

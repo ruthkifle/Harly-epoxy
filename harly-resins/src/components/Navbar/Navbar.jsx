@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import './Navbar.css';
 
 const Navbar = () => {
-    const [ isMenuOpen, setIsMenuOpen ] = usestate(false);
-    const [ isDropdownOpen, setIsDropdownOpen ] = usestate(false);
+    const [ isMenuOpen, setIsMenuOpen ] = useState(false);
+    const [ isDropdownOpen, setIsDropdownOpen ] = useState(false);
 
     const closeMenu = () => {
         setIsMenuOpen(false);
@@ -44,3 +44,5 @@ const Navbar = () => {
         </header>
     )
 }
+
+export default Navbar;
