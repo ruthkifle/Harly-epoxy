@@ -1,27 +1,6 @@
 /*GENERAL STYLES */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-
-}
-
-html {
-    scroll-padding-top: 150px;
-}
 
 
-
-
-
-
-/* BRAND COLORS */
-:root {
-    --green: #0c4526;
-    --beige: #f8e5b3;
-    --gold: #ffea00;
-    --white: #ffffff;
-}
 
 
 
@@ -31,35 +10,16 @@ html {
 /* FONTS AND TEXT STYLES*/
 
 /* font for logo */
-@font-face {
-    font-family: 'HarlyFont';
-    src: url('../fonts/sunroll/Sunroll.ttf') format('truetype');
-}
 
 /* hero section title */
-.hero-section h1 {
-    font-family: Playfair Display, serif;
-    color: black
-}
+
 
 
 /*all the main headings in the body */
-body h1 {
-    font-family: Playfair Display, serif;
-    color: var(--green);
-    margin-bottom: 15px;
-    text-align: center;
-    margin-top: 15px;
-}
+
 
 /* general design for body */
-body {
-    font-family: 'Avenir', sans-serif;
-    background: #ffffff;
-    color: #333;
-    line-height: 1.6;
-    text-align: center;
-}
+
 
 
 
@@ -83,48 +43,12 @@ body {
 }
 
 /* logo design and margins */
-.logo {
-    font-family: 'HarlyFont';
-    font-size: 26px;
-    text-align: left;
-    margin-right: 40px;
-}
 
 /* hamburger menu for mobile screen*/
-.menu {
-    display: none;
-    border: none;
-    background: none;
-    font-size: 1.8rem;
-    cursor: pointer;
-    z-index: 4000;
-}
 
-/*main navigation style*/
-.navs {
-    display: flex;
-    gap: 24px;
-    align-items: center;
-}
 
 /*nav links*/
-.navs a {
-    text-decoration: none;
-    color: #1e3a2b;
-    font-weight: 700;
-    font-size: 0.95rem;
-}
 
-/*hover style*/
-.navs a:hover {
-    color: #cba86b;
-
-}
-
-.navs a:active {
-    color: #cba86b;
-    font-weight: 600;
-}
 
 
 

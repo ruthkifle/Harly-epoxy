@@ -1,0 +1,29 @@
+:root {
+
+    /*MAIN COLORS*/
+    --primary-green: #0c4526;
+    --primary-beige: #f8e5b3;
+    --accent-gold: #ffea00;
+    --hover-gold: #cba86b;
+
+
+    /*TEXT COLORS*/
+    --text-main: #333;
+    --text-muted: #444;
+    --text-on-green: #f8e5b3;
+    --text-on-beige: #0c4526;
+    --white: #fff;
+
+    /*BG AND FG*/
+    --bg-body: #fff;
+    --bg-card: #fff;
+    --bg-note: #f4f4f4;
+    --border-light: #ccc;
+    --border-gold: #d6c28e;
+
+    /*HOVER COLORS*/
+    --btn-hover: #1a5e3a;
+    --shadow-light: rgba(0, 0, 0, 0.05);
+    --shadow-medium: rgba(0, 0, 0, 0.1);
+    --shadow-heavy: rgba(0, 0, 0, 0.2);
+}

@@ -1,0 +1,58 @@
+.header {
+    position: sticky;
+    top: 0;
+    height: 70px;
+    z-index: 2000;
+    background: var(--white);
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: var(--shadow-light);
+}
+
+.logo {
+    font-family: 'HarlyFont';
+    font-size: 26px;
+    color: var(--primary-green);
+}
+
+.navs a,
+.dropdown-btn {
+    text-decoration: none;
+    color: var(--text-on-beige);
+    font-weight: 700;
+    font-size: 0.95rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.navs a:hover,
+.dropdown-btn:hover {
+    color: var(--hover-gold);
+}
+
+@media (max-width: 768px) {
+    .menu {
+        display: block;
+        color: var(--primary-green);
+    }
+
+    .navs {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: var(--white);
+        padding: 20px 0;
+        box-shadow: var(--shadow-medium);
+    }
+
+    .navs.show {
+        display: flex;
+    }
+}

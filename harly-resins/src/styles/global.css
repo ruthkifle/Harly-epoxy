@@ -1,0 +1,79 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px;
+}
+
+body {
+    font-family: 'Avenir', 'Helvetica', sans-serif;
+    background: var(--bg-body);
+    color: var(--text-main);
+    line-height: 1.6;
+    text-align: center;
+    overflow-x: hidden;
+}
+
+@font-face {
+    font-family: 'HarlyFont';
+    src: url('../assets/fonts/sunroll/Sunroll.ttf') format('truetype');
+    font-display: swap;
+}
+
+h1,
+h2,
+h3 {
+    font-family: Playfair Display, serif;
+    color: var(--primary-green);
+    margin-bottom: 1rem;
+}
+
+.page-title {
+    font-size: 2.5rem;
+    margin-top: 2rem;
+    color: var(--primary-green);
+}
+
+.page-wrapper {
+    min-height: calc(100vh - 150px);
+    padding-bottom: 40px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.mt-2 {
+    margin-top: 2rem;
+}
+
+.mb-2 {
+    margin-bottom: 2rem;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fadeIn {
+    animation: fadeIn 0.5s ease-in-out;
+}
