@@ -368,6 +368,44 @@ h3 {
     transform: translateY(-2px);
 }
 
+.contact-icons {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 20px;
+
+    margin: 20px 20px;
+
+}
+
+
+
+.contact-icons img {
+
+    width: 32px;
+
+    height: 32px;
+
+    transition: 0.3s ease;
+
+    cursor: pointer;
+
+    margin: 20px 20px 20px 20px;
+
+}
+
+
+
+.contact-icons img:hover {
+
+    transform: scale(1.15);
+
+    filter: none;
+
+}
+
 .page-footer {
     background-color: var(--primary-green);
     color: var(--primary-beige);

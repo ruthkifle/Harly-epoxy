@@ -122,7 +122,7 @@ const Home = () => {
                     <a href="https://www.instagram.com/harly_resin/profile" target="_blank" rel="noreferrer"> <img src="/images/icons/instagram (1).png" alt="Instagram" /></a>
                     <a href="https://www.tiktok.com/@harly_resinart" target="_blank" rel="noreferrer"> <img src="/images/icons/tik-tok (1).png" alt="Tiktok" /></a>
                     <a href="https://www.facebook.com/share/17htsbuqjS/" target="_blank" rel="noreferrer"> <img src="/images/icons/facebook (1).png" alt="Facebook" /></a>
-                    <a href="mailto:harlyresins@gmail.com"> <img src="/assets/images/icons/communication.png" alt="Email" /></a>
+                    <a href="mailto:harlyresins@gmail.com"> <img src="/images/icons/communication.png" alt="Email" /></a>
                 </div>
             </div>
         </div>
