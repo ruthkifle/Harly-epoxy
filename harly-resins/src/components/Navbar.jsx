@@ -28,32 +28,9 @@ const Navbar = () => {
                     Home
                 </Link>
 
-                <div className="dropdown">
-                    <button
-                        className="dropdown-btn"
-                        onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                    >
-                        Products ▾
-                    </button>
-
-                    <div className={`dropcontent ${isDropdownOpen ? "show" : ""}`}>
-                        <Link to="/catalog#keychain" onClick={closeMenu}>
-                            Keychains
-                        </Link>
-                        <Link to="/catalog#bookmark" onClick={closeMenu}>
-                            Bookmarks
-                        </Link>
-                        <Link to="/catalog#phonestand" onClick={closeMenu}>
-                            Phonestands
-                        </Link>
-                        <Link to="/catalog#kitchenware" onClick={closeMenu}>
-                            Kitchenware
-                        </Link>
-                        <Link to="/catalog#others" onClick={closeMenu}>
-                            Others
-                        </Link>
-                    </div>
-                </div>
+                <Link to="/catalog" onClick={closeMenu}>
+                    Products
+                </Link>
 
                 <Link to="/about" onClick={closeMenu}>
                     About
