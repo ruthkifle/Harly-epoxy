@@ -17,7 +17,7 @@ export default function Header() {
             <a href="/catalog#bookmark">Bookmarks</a>
             <a href="/catalog#phonestand">Phonestands</a>
             <a href="/catalog#kitchenware">Kitchenware</a>
-            <a href="/catalog#other">Others</a>
+            <a href="/catalog#others">Others</a>
           </div>
         </div>
         <a href="/about">About</a>

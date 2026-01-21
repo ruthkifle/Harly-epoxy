@@ -29,31 +29,56 @@ const Home = () => {
             {/* PRODUCT GRID */}
             <div className="container">
                 <div className="product-grid">
-                    <ProductCard
-                        image="/images/homepage/keychain-many.jpg"
-                        name="Keychains"
-                        link="/catalog#keychain"
-                    />
-                    <ProductCard
-                        image="/images/homepage/bookmarks.jpg"
-                        name="Bookmarks"
-                        link="/catalog#bookmark"
-                    />
-                    <ProductCard
-                        image="/images/homepage/phonestand-purple.jpg"
-                        name="Phone Stands"
-                        link="/catalog#phonestand"
-                    />
-                    <ProductCard
-                        image="/images/kitchenware/one corner.jpg"
-                        name="Kitchenware"
-                        link="/catalog#kitchenware"
-                    />
-                    <ProductCard
-                        image="/images/homepage/beads.jpg"
-                        name="Others"
-                        link="/catalog#other"
-                    />
+                    {/* Note: We wrap data in a 'product' object to match your ProductCard component */}
+                    <Link to="/catalog#keychain" style={{ textDecoration: 'none', color: 'inherit' }}>
+                        <ProductCard
+                            product={{
+                                image: "/images/homepage/keychain-many.jpg",
+                                description: "Handmade custom keychains for every style.",
+                                code: "Keychains"
+                            }}
+                        />
+                    </Link>
+
+                    <Link to="/catalog#bookmark" style={{ textDecoration: 'none', color: 'inherit' }}>
+                        <ProductCard
+                            product={{
+                                image: "/images/homepage/bookmarks.jpg",
+                                description: "Elegant bookmarks for the perfect reading vibe.",
+                                code: "Bookmarks"
+                            }}
+                        />
+                    </Link>
+
+                    <Link to="/catalog#phonestand" style={{ textDecoration: 'none', color: 'inherit' }}>
+                        <ProductCard
+                            product={{
+                                image: "/images/homepage/phonestand-purple.jpg",
+                                description: "Sturdy and artistic stands for your device.",
+                                code: "Phone Stands"
+                            }}
+                        />
+                    </Link>
+
+                    <Link to="/catalog#kitchenware" style={{ textDecoration: 'none', color: 'inherit' }}>
+                        <ProductCard
+                            product={{
+                                image: "/images/kitchenware/one corner.jpg",
+                                description: "Unique trays, bowls, and plates.",
+                                code: "Kitchenware"
+                            }}
+                        />
+                    </Link>
+
+                    <Link to="/catalog#others" style={{ textDecoration: 'none', color: 'inherit' }}>
+                        <ProductCard
+                            product={{
+                                image: "/images/homepage/beads.jpg",
+                                description: "Custom name stands and colorful beads.",
+                                code: "Others"
+                            }}
+                        />
+                    </Link>
                 </div>
             </div>
 
@@ -65,7 +90,7 @@ const Home = () => {
                 <div className="cards-row">
                     <div className="card-element">
                         <h3>Custom colors & styles</h3>
-                        Custom colors & styles - You can choose your favorite colors, flakes, and details to match your vibe or gift idea
+                        You can choose your favorite colors, flakes, and details to match your vibe or gift idea
                     </div>
                     <div className="card-element">
                         <h3>Perfect for gifting</h3>
@@ -88,21 +113,21 @@ const Home = () => {
                 <p className="description text-center">Getting your custom resin item is easy — just follow these steps.</p>
 
                 <div className="cards-row">
-                    <div className="card-element">1. Choose the product category (Keychains, Bookmarks, Plates, etc.)</div>
+                    <div className="card-element">1. Choose the product category</div>
                     <div className="card-element">2. Pick your favorite design from our catalog</div>
                     <div className="card-element">3. Note the product code or take a screenshot</div>
-                    <div className="card-element">4. Tell us your preferred colors or custom details</div>
-                    <div className="card-element">5. Send your order through Telegram, Instagram or contact us directly</div>
-                    <div className="card-element">6. Pay 50% prepayment to confirm the order</div>
-                    <div className="card-element">7. Place your order 3-5 days early so we can craft it with care</div>
-                    <div className="card-element">8. Once your piece is ready, we'll send final photos before delivery</div>
+                    <div className="card-element">4. Tell us your preferred colors or details</div>
+                    <div className="card-element">5. Send order via Telegram or Instagram</div>
+                    <div className="card-element">6. Pay 50% prepayment to confirm</div>
+                    <div className="card-element">7. Place order 3-5 days early</div>
+                    <div className="card-element">8. Final photos sent before delivery</div>
                 </div>
             </section>
 
             {/* RESIN CARE SECTION */}
             <section className="info-section container">
                 <h1 className="mt-2">Resin Care Steps</h1>
-                <p className="description text-center">To keep your resin items looking beautiful and lasting long, follow these simple care tips:</p>
+                <p className="description text-center">Simple care tips to keep your items beautiful:</p>
 
                 <div className="cards-row">
                     <div className="card-element">Avoid extreme heat</div>

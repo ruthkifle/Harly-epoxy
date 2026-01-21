@@ -49,7 +49,7 @@ const Navbar = () => {
                         <Link to="/catalog#kitchenware" onClick={closeMenu}>
                             Kitchenware
                         </Link>
-                        <Link to="/catalog#other" onClick={closeMenu}>
+                        <Link to="/catalog#others" onClick={closeMenu}>
                             Others
                         </Link>
                     </div>

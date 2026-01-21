@@ -10,7 +10,7 @@ export default function CategoryFilter({ selectedCategory, onCategoryChange }) {
         <button onClick={() => onCategoryChange("bookmark")}>Bookmarks</button>
         <button onClick={() => onCategoryChange("phonestand")}>Phone Stands</button>
         <button onClick={() => onCategoryChange("kitchenware")}>Kitchenware</button>
-        <button onClick={() => onCategoryChange("other")}>Others</button>
+        <button onClick={() => onCategoryChange("others")}>Others</button>
 
       </div>
     </nav>
