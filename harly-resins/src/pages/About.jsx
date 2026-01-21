@@ -1,102 +1,72 @@
-export default function About() {
-  return (
-    <div className="about-page">
+import React from 'react';
+import '../styles/global.css';
 
-      {/* Hero Section */}
+const About = () => {
+  return (
+    <div className="about-page-container">
+      {/* HERO SECTION */}
       <section className="hero-section">
-        <h1>About Us</h1>
-        <p>Learn more about Harly Resins</p>
+        <div className="hero-content">
+          <h1>About Us</h1>
+          <p>Learn more about Harly Resins</p>
+        </div>
       </section>
 
-      {/* Our Story */}
-      <div className="about-intro">
-        <h1>Our Story</h1>
-        <p>
-          Harly Resins was founded with a passion for creating beautiful, handmade resin
-          products that bring joy and functionality to everyday life. Our journey began
-          with a simple idea: to combine art and creativity into unique pieces that
-          reflect individual styles.
-        </p>
-      </div>
+      <div className="container">
+        {/* OUR STORY */}
+        <section className="about-section mt-2">
+          <h1>Our Story</h1>
+          <p className="description-text">
+            Harly Resins was founded with a passion for creating beautiful, handmade resin products
+            that bring joy and functionality to everyday life. Our journey began with a simple idea:
+            to combine art and creativity into unique pieces that reflect individual styles.
+          </p>
+        </section>
 
-      {/* Mission & Vision */}
-      <div className="mission-vision">
-        <h1>Our Mission & Vision</h1>
-        <p>
-          Our mission is to provide high-quality, customizable resin products that inspire
-          creativity and self-expression. We envision a world where art and functionality
-          coexist, enhancing the lives of our customers through our handcrafted creations.
-        </p>
-      </div>
+        {/* MISSION & VISION */}
+        <section className="about-section mt-2">
+          <h1>Our Mission & Vision</h1>
+          <p className="description-text">
+            Our mission is to provide high-quality, customizable resin products that inspire
+            creativity and self-expression. We envision a world where art and functionality coexist,
+            enhancing the lives of our customers through our handcrafted creations.
+          </p>
+        </section>
 
-      {/* How We Started */}
-      <div className="how-we-started">
-        <h1>How we started</h1>
+        {/* HOW WE STARTED */}
+        <section className="about-section mt-2">
+          <h1>How we started</h1>
+          <p className="description-text">
+            Harly Resins began in the most unexpected way — inside our college dorm room.
+            We didn't have a studio or proper tools; what we had was curiosity and one small resin kit.
+            At first, it was just a fun activity between classes. We mixed colors on the floor and
+            waited impatiently for each piece to cure. What began as three friends experimenting
+            turned into a small handmade brand with a big dream.
+          </p>
+        </section>
 
-        <p>
-          Harly Resins began in the most unexpected way — inside our college dorm room. We
-          didn't have a studio, proper tools, or even much experience. What we did have
-          was curiosity, creativity, and one small resin kit we bought simply because we
-          wanted to “try something new.”
-          <br /><br />
-          At first, it was just a fun activity between classes. We mixed colors on the
-          floor, experimented with dried flowers, poured resin into random molds, and
-          waited impatiently for each piece to cure. We didn't expect much — but the moment
-          we created our first successful piece, something changed. It felt exciting, almost
-          magical, to watch clear liquid turn into something glossy, colorful, and
-          beautiful.
-          <br /><br />
-          We kept creating, learning, and failing forward. Our friends saw our early pieces
-          and started asking if they could buy some. People wanted keychains, bookmarks, and
-          tiny gifts. That was the first moment we realized: this wasn't just a hobby
-          anymore — it was something people connected with.
-          <br /><br />
-          What began as three friends experimenting with resin in a cramped room slowly
-          turned into a small handmade brand with a big dream: to create beautiful,
-          meaningful pieces that bring joy to everyday life.
-        </p>
-      </div>
+        {/* WHY WE STARTED */}
+        <section className="about-section mt-2">
+          <h1>Why we started</h1>
+          <p className="description-text">
+            We started this brand because we saw how something small—a keychain, a bookmark, a tray—could
+            become more than just an object. We wanted people to feel a touch of beauty and a moment
+            of joy. Every gold flake and dried flower is a tiny expression of creativity.
+          </p>
+        </section>
 
-      {/* Why We Started */}
-      <div className="why-we-started">
-        <h1>Why we started</h1>
-
-        <p>
-          We started this brand because we saw how something small — a keychain, a
-          bookmark, a tray — could become more than just an object. As we kept creating in
-          that tiny dorm room, we realized that resin wasn't just a fun craft for us; it
-          was a way to turn everyday items into small pieces of art.
-          <br /><br />
-          We wanted people to feel something when they held our pieces — a touch of beauty,
-          a moment of joy, something personal they could carry or gift. Every swirl of
-          color, every dried flower, every gold flake felt like a tiny expression of
-          creativity. And when people started connecting with our work, we knew we were
-          making more than products — we were creating meaningful little details that
-          brighten everyday life.
-          <br /><br />
-          That feeling is what inspired Harly Resins: the idea that ordinary things can be
-          transformed into something beautiful, personal, and made with heart.
-        </p>
-      </div>
-
-      {/* How It’s Going */}
-      <div className="how-its-going">
-        <h1>How its going</h1>
-
-        <p>
-          Today, we're a growing small business run by three students juggling classes,
-          deadlines, and resin pours at 2AM — and honestly? We love it. Each order, each
-          custom request, each message from someone who loved their piece pushes us to
-          create even better art.
-          <br /><br />
-          We've expanded from simple keychains to trays, bookmarks, phone stands, beads,
-          and more, all handmade with the same excitement we had on day one.
-          <br /><br />
-          We're learning, improving, experimenting with new molds and colors, and slowly
-          turning our little dream into something real. And the best part? We're just
-          getting started.
-        </p>
+        {/* HOW IT'S GOING */}
+        <section className="about-section mt-2 mb-2">
+          <h1>How it's going</h1>
+          <p className="description-text">
+            Today, we're a growing business run by three students juggling classes and resin pours
+            at 2AM. We've expanded from simple keychains to phone stands, beads, and more.
+            We’re just getting started!
+          </p>
+        </section>
       </div>
     </div>
   );
-}
+};
+
+export default About;

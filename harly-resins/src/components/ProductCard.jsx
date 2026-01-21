@@ -1,4 +1,4 @@
-import './ProductCard.css';
+import "../styles/global.css";
 
 const ProductCard = ({ image = "", name = "Product", price = "0", category = "Uncategorized" }) => {
   return (

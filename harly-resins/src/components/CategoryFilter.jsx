@@ -1,4 +1,4 @@
-import "./CategoryFilter.css";
+import "../styles/global.css";
 
 export default function CategoryFilter({ selectedCategory, onCategoryChange }) {
   return (

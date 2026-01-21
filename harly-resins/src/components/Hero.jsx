@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./Hero.css";
+import "../styles/global.css";
 
 export default function Header() {
   const [ menuOpen, setMenuOpen ] = useState(false);
