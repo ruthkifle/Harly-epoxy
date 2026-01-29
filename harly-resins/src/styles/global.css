@@ -655,11 +655,6 @@ h3 {
     color: var(--primary-beige);
 }
 
-.clear-filter-btn {
-    background: #c0392b;
-    color: white;
-}
-
-.clear-filter-btn:hover {
+.clear-btn:hover {
     background: #e74c3c;
 }
