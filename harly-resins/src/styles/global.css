@@ -223,6 +223,8 @@ h3 {
     cursor: pointer;
     font-weight: bold;
     transition: 0.3s ease;
+    padding: 10px 20px;
+    margin: 0 6px;
 }
 
 .choices button:hover {
@@ -477,7 +479,6 @@ h3 {
 
 
 
-
 .page-title {
     font-size: 2.5rem;
     margin-top: 2rem;
@@ -501,4 +502,74 @@ h3 {
 
 .mb-2 {
     margin-bottom: 2rem;
+}
+
+.filter-panel {
+    position: fixed;
+    top: 0;
+    left: -350px;
+    width: 300px;
+    height: 100%;
+    background: white;
+    box-shadow: 3px 0 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    z-index: 3000;
+    transition: 0.3s ease;
+    overflow-y: auto;
+}
+
+.filter-panel.open {
+    left: 0;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.filter-section {
+    margin-top: 20px;
+    text-align: left;
+}
+
+.filter-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.filter-title {
+    font-weight: bold;
+    margin-top: 20px;
+    cursor: pointer;
+    color: var(--primary-green);
+}
+
+.filter-options {
+    margin: 10px 0;
+}
+
+.filter-option {
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 8px;
+    cursor: pointer;
+    border: 1px solid #ddd;
+}
+
+.filter-option.active {
+    border: 2px solid var(--primary-green);
+    background: var(--beige);
+    color: var(--primary-green);
+    font-weight: bold;
 }
