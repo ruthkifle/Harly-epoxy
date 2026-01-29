@@ -654,7 +654,3 @@ h3 {
     background: #c92a2a;
     color: var(--primary-beige);
 }
-
-.clear-btn:hover {
-    background: #e74c3c;
-}
