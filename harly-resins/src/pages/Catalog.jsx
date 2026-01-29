@@ -1,12 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import CategoryFilter from "../components/CategoryFilter";
 import ProductCard from "../components/ProductCard";
-import products from "../data/products";
-import "../styles/global.css";
+import "../styles/global.css"
 
 export default function Catalog() {
   // CATEGORY FILTER (All, Keychains, etc.)
   const [ selectedCategory, setSelectedCategory ] = useState("all");
+
+  const [productList, setProductList] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:4000/api/products")
+      .then(res => res.json())
+      .then(data => setProductList(data))
+      .catch(err => console.error("Error fetching products:", err));
+  }, []);
+
+  const [loading, setLoading] = useState(true);
 
   // ATTRIBUTE FILTERS
   const [ filters, setFilters ] = useState({
@@ -41,8 +51,8 @@ export default function Catalog() {
 
   // PRODUCT FILTERING LOGIC
   let filtered = selectedCategory === "all"
-    ? products
-    : products.filter(p => p.category === selectedCategory);
+    ? productList
+    : productList.filter(p => p.category === selectedCategory);
 
   Object.keys(filters).forEach(key => {
     if (filters[ key ].length > 0) {
