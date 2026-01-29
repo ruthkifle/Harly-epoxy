@@ -214,6 +214,8 @@ h3 {
     cursor: pointer;
     font-weight: bold;
     transition: 0.3s ease;
+    padding: 10px 20px;
+    margin: 0 6px;
 }
 
 .choices button:hover {
@@ -468,7 +470,6 @@ h3 {
 
 
 
-
 .page-title {
     font-size: 2.5rem;
     margin-top: 2rem;
@@ -561,4 +562,39 @@ h3 {
   background: var(--beige);
   color: var(--primary-green);
   font-weight: bold;
+}
+.filter-btns {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.filter-toggle,
+.clear-filter-btn {
+  padding: 10px 22px;
+  border-radius: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s ease;
+  border: none;
+}
+
+.filter-toggle {
+  background: var(--primary-green);
+  color: var(--primary-beige);
+}
+
+.filter-toggle:hover {
+  background: var(--hover-gold);
+  color: white;
+}
+
+.clear-filter-btn {
+  background: #c0392b;
+  color: white;
+}
+
+.clear-filter-btn:hover {
+  background: #e74c3c;
 }

@@ -41,7 +41,6 @@ export default function Catalog() {
 
   const filteredProducts = filtered;
 
-  // HELPER — Toggle individual filter option
   function toggleFilter(key, value) {
     setFilters(prev => ({
       ...prev,
@@ -54,13 +53,11 @@ export default function Catalog() {
   return (
     <div className="catalog-page">
 
-      {/* HERO */}
       <section className="hero-section">
         <h1>Product Catalog</h1>
         <p>A little charm for your daily vibe</p>
       </section>
 
-      {/* INTRO */}
       <div className="catalog-intro">
         <h1>Our Resin Collection</h1>
         <p>
@@ -70,16 +67,32 @@ export default function Catalog() {
         </p>
       </div>
 
-      {/* CATEGORY FILTER BUTTONS */}
       <CategoryFilter
         selectedCategory={selectedCategory}
         onCategoryChange={setSelectedCategory}
       />
 
-      {/* FILTER BUTTON (OPEN PANEL) */}
+      <div className="filter-btns">
       <button className="filter-toggle" onClick={() => setShowFilter(true)}>
-        Filter ▸
+        Filter
       </button>
+
+      <button
+        className="clear-filter-btn"
+        onClick={() => {
+          setFilters({
+            color: [],
+            flake: [],
+            glitter: [],
+            chain: [],
+            tassle: [],
+            handle: []
+          });
+        }}
+      >
+        Clear ✕
+      </button>
+      </div>
 
       {/* SLIDE FILTER PANEL */}
       <div className={`filter-panel ${showFilter ? "open" : ""}`}>
