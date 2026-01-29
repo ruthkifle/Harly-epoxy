@@ -1,25 +1,88 @@
 const http = require("http");
-const fs = require("fs");
 const path = require("path");
+const products = require("./products.json"); 
 
 const PORT = 4000;
 
-// Read products.json
-const productsPath = path.join(__dirname, "products.json");
-const productsData = JSON.parse(fs.readFileSync(productsPath, "utf-8"));
-
 const server = http.createServer((req, res) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Methods", "GET");
+  // Enable CORS for React
+  res.setHeader("Access-Control-Allow-Origin", "http://localhost:5173");
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
 
-  if (req.url === "/api/products" && req.method === "GET") {
-    res.writeHead(200, { "Content-Type": "application/json" });
-    return res.end(JSON.stringify(productsData));
+  if (req.method === "OPTIONS") {
+    res.writeHead(204);
+    res.end();
+    return;
   }
 
+  // ========= GET ALL PRODUCTS =========
+  if (req.url === "/api/products" && req.method === "GET") {
+    res.writeHead(200, { "Content-Type": "application/json" });
+    res.end(JSON.stringify(products));
+    return;
+  }
+
+  // ========= GET PRODUCT BY ID =========
+  if (req.url.startsWith("/api/products/") && req.method === "GET") {
+    const id = parseInt(req.url.split("/").pop());
+    const product = products.find(p => p.id === id);
+
+    res.writeHead(200, { "Content-Type": "application/json" });
+    res.end(JSON.stringify(product || { error: "Not found" }));
+    return;
+  }
+    // Serve images statically from backend/public
+    if (req.url.startsWith("/images/")) {
+    const fs = require("fs");
+    const path = require("path");
+
+    const filePath = path.join(__dirname, req.url);
+
+    if (fs.existsSync(filePath)) {
+        res.writeHead(200, { "Content-Type": "image/jpeg" });
+        return fs.createReadStream(filePath).pipe(res);
+    }
+
+    res.writeHead(404);
+    return res.end();
+    }
+
+  // ========= FILTER ENDPOINT (placeholder) =========
+  if (req.url === "/api/products/filter" && req.method === "POST") {
+    let body = "";
+    req.on("data", chunk => (body += chunk));
+
+    req.on("end", () => {
+      const filters = JSON.parse(body);
+      console.log("Filters received:", filters);
+
+      res.writeHead(200, { "Content-Type": "application/json" });
+      res.end(JSON.stringify({ ok: true, received: filters }));
+    });
+
+    return;
+  }
+
+  // ========= ADD TO CART PLACEHOLDER =========
+  if (req.url === "/api/cart" && req.method === "POST") {
+    let body = "";
+    req.on("data", chunk => (body += chunk));
+
+    req.on("end", () => {
+      const item = JSON.parse(body);
+      console.log("Cart item received:", item);
+
+      res.writeHead(200, { "Content-Type": "application/json" });
+      res.end(JSON.stringify({ success: true, added: item }));
+    });
+
+    return;
+  }
+
+  // ========= DEFAULT NOT FOUND =========
   res.writeHead(404, { "Content-Type": "application/json" });
-  res.end(JSON.stringify({ error: "Not Found" }));
+  res.end(JSON.stringify({ error: "Route not found" }));
 });
 
 server.listen(PORT, () => {
