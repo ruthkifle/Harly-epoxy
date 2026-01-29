@@ -1,16 +1,14 @@
 import React from 'react';
-
-
+import { useCart } from "../context/CartContext";
 
 export default function ProductCard({ product }) {
-
   if (!product) return null;
+
+  // Connect to the cart "brain"
+  const { addToCart } = useCart();
 
   return (
     <div className="product-card">
-      {/* The image path will now work as long as it starts with "/" 
-         and the images folder is in your "public" folder.
-      */}
       <img
         src={product.image}
         alt={product.name || "Resin Product"}
@@ -18,14 +16,23 @@ export default function ProductCard({ product }) {
       />
 
       <div className="description">
-        {/* Product Code (e.g., HRK#01) */}
+        {/* Product Code */}
         <h4>Product Code: {product.code}</h4>
 
         {/* The description text */}
         <p>{product.description}</p>
 
-        {/* Only show the price if it exists for this specific product (useful for the Others section) */}
-        {product.price && <h4 className="product-price">{product.price}</h4>}
+        {/* Price and Add to Cart Action */}
+        <div className="product-card-footer">
+          {product.price && <h4 className="product-price">{product.price}</h4>}
+
+          <button
+            className="add-to-cart-btn"
+            onClick={() => addToCart(product)}
+          >
+            Add to Cart
+          </button>
+        </div>
       </div>
     </div>
   );
