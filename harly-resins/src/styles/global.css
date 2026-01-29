@@ -509,18 +509,21 @@ h3 {
     top: 0;
     left: -350px;
     width: 300px;
-    height: 100%;
+    height: 100dvh;
     background: white;
     box-shadow: 3px 0 10px rgba(0, 0, 0, 0.2);
     padding: 20px;
     z-index: 3000;
     transition: 0.3s ease;
-    overflow-y: auto;
+    overflow: hidden;
     padding-bottom: 100px;
+    display: flex;
+    flex-direction: column;
 }
 
 .filter-panel.open {
     left: 0;
+    overflow-y: scroll;
 }
 
 .close-btn {
@@ -542,13 +545,6 @@ h3 {
     font-weight: bold;
 }
 
-.close-btn {
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-}
-
 .filter-title {
     font-weight: bold;
     margin-top: 20px;
@@ -567,6 +563,7 @@ h3 {
     cursor: pointer;
     border: 1px solid #ddd;
 }
+
 .filter-option:hover {
     background: var(--primary-beige);
     color: var(--primary-green);
@@ -579,47 +576,47 @@ h3 {
     color: var(--primary-green);
     font-weight: bold;
 }
+
 .filter-footer {
-  padding: 20px;
-  margin-top: 20px;
-  border-top: 1px solid #ddd;
-  display: flex;
-  text-align: center;
-  justify-content: center;
+    padding: 20px;
+    margin-top: auto;
+    border-top: 1px solid #ddd;
+    background: white;
+    bottom: 0;
 }
 
 .filter-toggle {
-  padding: 10px 22px;
-  border-radius: 25px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: 0.3s ease;
-  border: none;
+    padding: 10px 22px;
+    border-radius: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s ease;
+    border: none;
 }
 
 .filter-toggle {
-  background: var(--primary-green);
-  color: var(--primary-beige);
+    background: var(--primary-green);
+    color: var(--primary-beige);
 }
 
 .filter-toggle:hover {
-  background: var(--hover-gold);
-  color: white;
+    background: var(--hover-gold);
+    color: white;
 }
 
 .clear-btn {
-  background: var(--primary-green);
-  color: var(--primary-beige);
-  border: none;
-  padding: 10px 20px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: 0.3s ease;
+    width: 100%;
+    background: #D32F2F;
+    color: var(--white);
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s ease;
 }
 
 .clear-btn:hover {
-  background: var(--hover-gold);
-  color: var(--white);
+    background: #c92a2a;
+    color: var(--primary-beige);
 }
-
