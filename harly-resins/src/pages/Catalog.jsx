@@ -72,27 +72,9 @@ export default function Catalog() {
         onCategoryChange={setSelectedCategory}
       />
 
-      <div className="filter-btns">
       <button className="filter-toggle" onClick={() => setShowFilter(true)}>
         Filter
       </button>
-
-      <button
-        className="clear-filter-btn"
-        onClick={() => {
-          setFilters({
-            color: [],
-            flake: [],
-            glitter: [],
-            chain: [],
-            tassle: [],
-            handle: []
-          });
-        }}
-      >
-        Clear ✕
-      </button>
-      </div>
 
       {/* SLIDE FILTER PANEL */}
       <div className={`filter-panel ${showFilter ? "open" : ""}`}>

@@ -2,6 +2,17 @@ import "../styles/global.css";
 
 export default function FilterPanel({ show, onClose, filters, setFilters }) {
 
+    const clearAllFilters = () => {
+    setFilters({
+      color: [],
+      flake: [],
+      glitter: [],
+      chain: [],
+      tassle: [],
+      handle: []
+    });
+  };
+
   const toggle = (type, value) => {
     setFilters(prev => {
       const active = prev[type].includes(value);
@@ -19,6 +30,7 @@ export default function FilterPanel({ show, onClose, filters, setFilters }) {
     <div className={`filter-panel ${show ? "open" : ""}`}>
       <button className="close-btn" onClick={onClose}>✕</button>
       <h2>Filters</h2>
+
 
       {/* COLOR */}
       <div className="filter-section">
@@ -76,7 +88,6 @@ export default function FilterPanel({ show, onClose, filters, setFilters }) {
         </div>
         </div>
 
-
         {/* CHAIN */}
         <div className="filter-group">
         <label>Chain</label>
@@ -102,7 +113,6 @@ export default function FilterPanel({ show, onClose, filters, setFilters }) {
             ))}
         </div>
         </div>
-
 
         {/* TASSLE */}
         <div className="filter-group">
@@ -130,7 +140,6 @@ export default function FilterPanel({ show, onClose, filters, setFilters }) {
         </div>
         </div>
 
-
         {/* HANDLE */}
         <div className="filter-group">
         <label>Handle</label>
@@ -156,7 +165,11 @@ export default function FilterPanel({ show, onClose, filters, setFilters }) {
             ))}
         </div>
         </div>
-
+        <div className="filter-footer">
+          <button className="clear-btn" onClick={clearAllFilters}>
+            Clear Filters
+          </button>
+        </div>
     </div>
   );
 }

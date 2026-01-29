@@ -516,6 +516,7 @@ h3 {
     z-index: 3000;
     transition: 0.3s ease;
     overflow-y: auto;
+    padding-bottom: 100px;
 }
 
 .filter-panel.open {
@@ -566,6 +567,11 @@ h3 {
     cursor: pointer;
     border: 1px solid #ddd;
 }
+.filter-option:hover {
+    background: var(--primary-beige);
+    color: var(--primary-green);
+    transform: translateX(4px);
+}
 
 .filter-option.active {
     border: 2px solid var(--primary-green);
@@ -573,16 +579,16 @@ h3 {
     color: var(--primary-green);
     font-weight: bold;
 }
-
-.filter-btns {
+.filter-footer {
+  padding: 20px;
+  margin-top: 20px;
+  border-top: 1px solid #ddd;
   display: flex;
+  text-align: center;
   justify-content: center;
-  gap: 12px;
-  margin: 20px 0;
 }
 
-.filter-toggle,
-.clear-filter-btn {
+.filter-toggle {
   padding: 10px 22px;
   border-radius: 25px;
   font-weight: bold;
@@ -601,11 +607,19 @@ h3 {
   color: white;
 }
 
-.clear-filter-btn {
-  background: #c0392b;
-  color: white;
+.clear-btn {
+  background: var(--primary-green);
+  color: var(--primary-beige);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s ease;
 }
 
-.clear-filter-btn:hover {
-  background: #e74c3c;
+.clear-btn:hover {
+  background: var(--hover-gold);
+  color: var(--white);
 }
+
