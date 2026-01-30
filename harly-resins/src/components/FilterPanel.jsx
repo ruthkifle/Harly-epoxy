@@ -1,56 +1,61 @@
 import "../styles/global.css";
 
-export default function FilterPanel({ show, onClose, filters, setFilters }) {
+export default function FilterPanel({ show, onClose, filters, setFilters, onApplyFilters, selectedCategory }) {
 
   const clearAllFilters = () => {
-    setFilters({
+    const cleared = {
       color: [],
       flake: [],
       glitter: [],
       chain: [],
       tassle: [],
       handle: []
-    });
+    };
+    setFilters(cleared);
+    onApplyFilters(cleared); // Tell the database to reset too
   };
 
   const toggle = (type, value) => {
-    setFilters(prev => {
-      const active = prev[ type ].includes(value);
+    const activeList = filters[ type ].includes(value)
+      ? filters[ type ].filter(v => v !== value) // Remove if already there
+      : [ value ]; // Add it (Keeping it to one selection makes filtering easier)
 
-      return {
-        ...prev,
-        [ type ]: active
-          ? prev[ type ].filter(v => v !== value)   // remove
-          : [ ...prev[ type ], value ]               // add
-      };
-    });
+    const updatedFilters = { ...filters, [ type ]: activeList };
+    setFilters(updatedFilters);
+
+    // This sends the new filter state to the Backend
+    onApplyFilters(updatedFilters);
   };
 
   return (
     <div className={`filter-panel ${show ? "open" : ""}`}>
-      <button className="close-btn" onClick={onClose}>✕</button>
-      <h2>Filters</h2>
+      <div className="filter-header">
+        <h2>Filters</h2>
+        <button className="close-btn" onClick={onClose}>✕</button>
+      </div>
 
       <div className="filter-body">
-        {/* COLOR */}
+        {/* COLOR - Updated with your new JSON values */}
         <div className="filter-section">
           <h3>Color</h3>
-          {[ "Blue", "Pink", "Green", "Teal", "Black", "White", "Purple" ].map(c => (
-            <label key={c}>
-              <input
-                type="checkbox"
-                checked={filters.color.includes(c)}
-                onChange={() => toggle("color", c)}
-              />
-              {c}
-            </label>
-          ))}
+          <div className="filter-grid">
+            {[ "Black", "Blue", "Clear", "Golden", "Green", "Multicolored", "Orange", "Pink", "Purple", "Red", "Silver", "White" ].map(c => (
+              <label key={c} className={filters.color.includes(c) ? "active-label" : ""}>
+                <input
+                  type="checkbox"
+                  checked={filters.color.includes(c)}
+                  onChange={() => toggle("color", c)}
+                />
+                {c}
+              </label>
+            ))}
+          </div>
         </div>
 
         {/* FLAKE */}
         <div className="filter-section">
           <h3>Flake</h3>
-          {[ "Gold", "Silver" ].map(f => (
+          {[ "Golden", "Silver", "Pink", "No flakes" ].map(f => (
             <label key={f}>
               <input
                 type="checkbox"
@@ -63,115 +68,50 @@ export default function FilterPanel({ show, onClose, filters, setFilters }) {
         </div>
 
         {/* GLITTER */}
-        <div className="filter-group">
-          <label>Glitter</label>
-          <div className="filter-options">
-            {[ "Blue", "Silver", "Rose Gold" ].map((g) => (
-              <label key={g}>
-                <input
-                  type="checkbox"
-                  checked={filters.glitter.includes(g)}
-                  onChange={(e) => {
-                    if (e.target.checked) {
-                      setFilters({ ...filters, glitter: [ ...filters.glitter, g ] });
-                    } else {
-                      setFilters({
-                        ...filters,
-                        glitter: filters.glitter.filter((x) => x !== g),
-                      });
-                    }
-                  }}
-                />
-                {g}
+        <div className="filter-section">
+          <h3>Glitter</h3>
+          {[ "Blue", "Golden", "Multi", "Rose Gold", "Silver", "No glitter" ].map(g => (
+            <label key={g}>
+              <input
+                type="checkbox"
+                checked={filters.glitter.includes(g)}
+                onChange={() => toggle("glitter", g)}
+              />
+              {g}
+            </label>
+          ))}
+        </div>
+
+        {/* Only show Chain if it's a Keychain */}
+        {selectedCategory === "keychain" && (
+          <div className="filter-section">
+            <h3>Chain</h3>
+            {[ "Golden", "Silver" ].map(ch => (
+              <label key={ch}>
+                <input type="checkbox" checked={filters.chain.includes(ch)} onChange={() => toggle("chain", ch)} />
+                {ch}
               </label>
             ))}
           </div>
-        </div>
+        )}
 
-        {/* CHAIN */}
-        <div className="filter-group">
-          <label>Chain</label>
-          <div className="filter-options">
-            {[ "Golden", "Silver" ].map((c) => (
-              <label key={c}>
-                <input
-                  type="checkbox"
-                  checked={filters.chain.includes(c)}
-                  onChange={(e) => {
-                    if (e.target.checked) {
-                      setFilters({ ...filters, chain: [ ...filters.chain, c ] });
-                    } else {
-                      setFilters({
-                        ...filters,
-                        chain: filters.chain.filter((x) => x !== c),
-                      });
-                    }
-                  }}
-                />
-                {c}
-              </label>
-            ))}
-          </div>
-        </div>
-
-        {/* TASSLE */}
-        <div className="filter-group">
-          <label>Tassle</label>
-          <div className="filter-options">
-            {[ "Golden", "Silver", "Red", "Light Pink", "Black", "Green", "Purple" ].map((t) => (
+        {/* Only show Tassle if it's a Bookmark */}
+        {selectedCategory === "bookmark" && (
+          <div className="filter-section">
+            <h3>Tassle</h3>
+            {[ "Blue", "Golden", "Green", "Pink", "White" ].map(t => (
               <label key={t}>
-                <input
-                  type="checkbox"
-                  checked={filters.tassle.includes(t)}
-                  onChange={(e) => {
-                    if (e.target.checked) {
-                      setFilters({ ...filters, tassle: [ ...filters.tassle, t ] });
-                    } else {
-                      setFilters({
-                        ...filters,
-                        tassle: filters.tassle.filter((x) => x !== t),
-                      });
-                    }
-                  }}
-                />
+                <input type="checkbox" checked={filters.tassle.includes(t)} onChange={() => toggle("tassle", t)} />
                 {t}
               </label>
             ))}
           </div>
-        </div>
-
-        {/* HANDLE */}
-        <div className="filter-group">
-          <label>Handle</label>
-          <div className="filter-options">
-            {[ "Golden", "Silver", "Epoxy" ].map((h) => (
-              <label key={h}>
-                <input
-                  type="checkbox"
-                  checked={filters.handle.includes(h)}
-                  onChange={(e) => {
-                    if (e.target.checked) {
-                      setFilters({ ...filters, handle: [ ...filters.handle, h ] });
-                    } else {
-                      setFilters({
-                        ...filters,
-                        handle: filters.handle.filter((x) => x !== h),
-                      });
-                    }
-                  }}
-                />
-                {h}
-              </label>
-            ))}
-          </div>
-        </div>
+        )}
       </div>
+
       <div className="filter-footer">
-        <button className="clear-btn" onClick={clearAllFilters}>
-          Clear Filters
-        </button>
+        <button className="clear-btn" onClick={clearAllFilters}>Clear All</button>
       </div>
     </div>
   );
 }
-

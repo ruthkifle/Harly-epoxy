@@ -6,8 +6,8 @@
     "description": "Multicolored dried flowers and clear resin",
     "image": "/images/Keychains/floral with flakes.jpg",
     "price": 300,
-    "color": "Multi",
-    "flake": "No flakes",
+    "color": "Pink",
+    "flake": "Golden",
     "glitter": "No glitter",
     "chain": "Golden"
   },
@@ -18,8 +18,8 @@
     "description": "Colors and golden flakes",
     "image": "/images/Keychains/Black & Golden.jpg",
     "price": 300,
-    "color": "Multi",
-    "flake": "No flakes",
+    "color": "Black",
+    "flake": "Golden",
     "glitter": "No glitter",
     "chain": "Golden"
   },
@@ -30,10 +30,10 @@
     "description": "Colors and glitter design",
     "image": "/images/Keychains/color with glitter.jpg",
     "price": 300,
-    "color": "Multi",
+    "color": "Multicolored",
     "flake": "No flakes",
-    "glitter": "No glitter",
-    "chain": "Golden"
+    "glitter": "Multi",
+    "chain": "Silver"
   },
   {
     "id": 4,
@@ -42,10 +42,10 @@
     "description": "Glitter and clear resin",
     "image": "/images/Keychains/fully glitter.jpg",
     "price": 300,
-    "color": "Multi",
+    "color": "Silver",
     "flake": "No flakes",
-    "glitter": "No glitter",
-    "chain": "Golden"
+    "glitter": "Silver",
+    "chain": "Silver"
   },
   {
     "id": 5,
@@ -54,8 +54,8 @@
     "description": "Foil flakes and clear resin",
     "image": "/images/Keychains/golden flakes.jpg",
     "price": 300,
-    "color": "Multi",
-    "flake": "No flakes",
+    "color": "Multicolored",
+    "flake": "Golden",
     "glitter": "No glitter",
     "chain": "Golden"
   },
@@ -66,10 +66,10 @@
     "description": "Clear resin only",
     "image": "/images/Keychains/transparent.jpg",
     "price": 300,
-    "color": "Multi",
+    "color": "Clear",
     "flake": "No flakes",
     "glitter": "No glitter",
-    "chain": "Golden"
+    "chain": "Silver"
   },
   {
     "id": 7,
@@ -78,10 +78,10 @@
     "description": "Clear resin and glitter",
     "image": "/images/Keychains/half glitter.jpg",
     "price": 300,
-    "color": "Multi",
+    "color": "Blue",
     "flake": "No flakes",
-    "glitter": "No glitter",
-    "chain": "Golden"
+    "glitter": "Blue",
+    "chain": "Silver"
   },
   {
     "id": 8,
@@ -90,10 +90,10 @@
     "description": "Silver flakes and clear resin",
     "image": "/images/Keychains/silver flakes.jpg",
     "price": 300,
-    "color": "Multi",
-    "flake": "No flakes",
+    "color": "Silver",
+    "flake": "Silver",
     "glitter": "No glitter",
-    "chain": "Golden"
+    "chain": "Silver"
   },
   {
     "id": 9,
@@ -102,8 +102,8 @@
     "description": "Powdered color and shine",
     "image": "/images/Keychains/k1.jpg",
     "price": 300,
-    "color": "Multi",
-    "flake": "No flakes",
+    "color": "White",
+    "flake": "Pink",
     "glitter": "No glitter",
     "chain": "Golden"
   },
@@ -114,10 +114,10 @@
     "description": "Pigment and flake",
     "image": "/images/Keychains/white & silver.jpg",
     "price": 300,
-    "color": "Multi",
-    "flake": "No flakes",
+    "color": "White",
+    "flake": "Silver",
     "glitter": "No glitter",
-    "chain": "Golden"
+    "chain": "Silver"
   },
   {
     "id": 11,
@@ -126,8 +126,8 @@
     "description": "Flakes with shiny powder",
     "image": "/images/Keychains/k3.jpg",
     "price": 300,
-    "color": "Multi",
-    "flake": "No flakes",
+    "color": "Pink",
+    "flake": "Golden",
     "glitter": "No glitter",
     "chain": "Golden"
   },
@@ -138,8 +138,8 @@
     "description": "Cherry red pigment with golden flakes",
     "image": "/images/Keychains/k4.jpg",
     "price": 300,
-    "color": "Multi",
-    "flake": "No flakes",
+    "color": "Red",
+    "flake": "Golden",
     "glitter": "No glitter",
     "chain": "Golden"
   },
@@ -150,10 +150,10 @@
     "description": "Golden Flakes",
     "image": "/images/bookmarks/flakes.jpg",
     "price": 330,
-    "color": "Multi",
-    "flake": "No flakes",
+    "color": "Golden",
+    "flake": "Golden",
     "glitter": "No glitter",
-    "tassle": "Gold"
+    "tassle": "Golden"
   },
   {
     "id": 14,
@@ -162,10 +162,10 @@
     "description": "Dried flowers on transparent base",
     "image": "/images/bookmarks/floral.jpg",
     "price": 330,
-    "color": "Multi",
-    "flake": "No flakes",
+    "color": "Multicolored",
+    "flake": "Golden",
     "glitter": "No glitter",
-    "tassle": "Gold"
+    "tassle": "Golden"
   },
   {
     "id": 15,
@@ -174,10 +174,10 @@
     "description": "Glitter design",
     "image": "/images/bookmarks/glitter.jpg",
     "price": 330,
-    "color": "Multi",
+    "color": "Golden",
     "flake": "No flakes",
-    "glitter": "No glitter",
-    "tassle": "Gold"
+    "glitter": "Golden",
+    "tassle": "Golden"
   },
   {
     "id": 16,
@@ -186,10 +186,10 @@
     "description": "Two color with flake stripes",
     "image": "/images/bookmarks/middle stripes.jpg",
     "price": 330,
-    "color": "Multi",
-    "flake": "No flakes",
+    "color": "Black",
+    "flake": "Golden",
     "glitter": "No glitter",
-    "tassle": "Gold"
+    "tassle": "White"
   },
   {
     "id": 17,
@@ -198,10 +198,10 @@
     "description": "Multicolored design",
     "image": "/images/bookmarks/mixed 2.jpg",
     "price": 330,
-    "color": "Multi",
-    "flake": "No flakes",
+    "color": "Blue",
+    "flake": "Golden",
     "glitter": "No glitter",
-    "tassle": "Gold"
+    "tassle": "Golden"
   },
   {
     "id": 18,
@@ -210,10 +210,10 @@
     "description": "Color Swirl Design",
     "image": "/images/bookmarks/mixed.jpg",
     "price": 330,
-    "color": "Multi",
+    "color": "Multicolored",
     "flake": "No flakes",
     "glitter": "No glitter",
-    "tassle": "Gold"
+    "tassle": "Golden"
   },
   {
     "id": 19,
@@ -222,10 +222,10 @@
     "description": "Middle Swirl Design",
     "image": "/images/bookmarks/ocean.jpg",
     "price": 330,
-    "color": "Multi",
-    "flake": "No flakes",
+    "color": "Green",
+    "flake": "Golden",
     "glitter": "No glitter",
-    "tassle": "Gold"
+    "tassle": "Green"
   },
   {
     "id": 20,
@@ -234,10 +234,10 @@
     "description": "Half flakes and powdered pigment",
     "image": "/images/bookmarks/top flake.jpg",
     "price": 330,
-    "color": "Multi",
-    "flake": "No flakes",
+    "color": "Pink",
+    "flake": "Golden",
     "glitter": "No glitter",
-    "tassle": "Gold"
+    "tassle": "Pink"
   },
   {
     "id": 21,
@@ -246,10 +246,10 @@
     "description": "Transparent ends design",
     "image": "/images/bookmarks/transparent ends.jpg",
     "price": 330,
-    "color": "Multi",
-    "flake": "No flakes",
+    "color": "Green",
+    "flake": "Golden",
     "glitter": "No glitter",
-    "tassle": "Gold"
+    "tassle": "Golden"
   },
   {
     "id": 22,
@@ -258,10 +258,10 @@
     "description": "Multi-Design bookmark set",
     "image": "/images/bookmarks/image copy.png",
     "price": 330,
-    "color": "Multi",
-    "flake": "No flakes",
+    "color": "Blue",
+    "flake": "Golden",
     "glitter": "No glitter",
-    "tassle": "Gold"
+    "tassle": "Blue"
   },
   {
     "id": 23,
@@ -270,10 +270,10 @@
     "description": "Half Transparent Pigments with Flakes",
     "image": "/images/bookmarks/image.png",
     "price": 330,
-    "color": "Multi",
-    "flake": "No flakes",
+    "color": "Multicolored",
+    "flake": "Golden",
     "glitter": "No glitter",
-    "tassle": "Gold"
+    "tassle": "Pink"
   },
   {
     "id": 24,
@@ -282,7 +282,7 @@
     "description": "Clear transparent colors",
     "image": "/images/phone stands/clear.jpg",
     "price": 650,
-    "color": "Multi",
+    "color": "Blue",
     "flake": "No flakes",
     "glitter": "No glitter"
   },
@@ -293,8 +293,8 @@
     "description": "Color with mixed flakes",
     "image": "/images/phone stands/color.jpg",
     "price": 650,
-    "color": "Multi",
-    "flake": "No flakes",
+    "color": "White",
+    "flake": "Golden",
     "glitter": "No glitter"
   },
   {
@@ -304,8 +304,8 @@
     "description": "Transparent base with dried flowers",
     "image": "/images/phone stands/floral.jpg",
     "price": 650,
-    "color": "Multi",
-    "flake": "No flakes",
+    "color": "Pink",
+    "flake": "Golden",
     "glitter": "No glitter"
   },
   {
@@ -315,7 +315,7 @@
     "description": "Glitter and Multicolored Flowers",
     "image": "/images/phone stands/glitter and color.jpg",
     "price": 650,
-    "color": "Multi",
+    "color": "Multicolored",
     "flake": "No flakes",
     "glitter": "No glitter"
   },
@@ -326,8 +326,8 @@
     "description": "Half half pigment and foil flakes",
     "image": "/images/phone stands/half half flake.jpg",
     "price": 650,
-    "color": "Multi",
-    "flake": "No flakes",
+    "color": "Pink",
+    "flake": "Silver",
     "glitter": "No glitter"
   },
   {
@@ -337,8 +337,8 @@
     "description": "Black and golden phone stand",
     "image": "/images/phone stands/image copy 2.png",
     "price": 650,
-    "color": "Multi",
-    "flake": "No flakes",
+    "color": "Black",
+    "flake": "Golden",
     "glitter": "No glitter"
   },
   {
@@ -348,8 +348,8 @@
     "description": "Transparent pigments and foil flakes",
     "image": "/images/phone stands/image copy.png",
     "price": 650,
-    "color": "Multi",
-    "flake": "No flakes",
+    "color": "Blue",
+    "flake": "Golden",
     "glitter": "No glitter"
   },
   {
@@ -359,8 +359,8 @@
     "description": "Lower half flake design",
     "image": "/images/phone stands/image.png",
     "price": 650,
-    "color": "Multi",
-    "flake": "No flakes",
+    "color": "Pink",
+    "flake": "Golden",
     "glitter": "No glitter"
   },
   {
@@ -370,8 +370,8 @@
     "description": "Middle stripe design with flakes",
     "image": "/images/phone stands/middle stripe.jpg",
     "price": 650,
-    "color": "Multi",
-    "flake": "No flakes",
+    "color": "Blue",
+    "flake": "Silver",
     "glitter": "No glitter"
   },
   {
@@ -381,7 +381,7 @@
     "description": "Mixed color design",
     "image": "/images/phone stands/multicolored.jpg",
     "price": 650,
-    "color": "Multi",
+    "color": "Multicolored",
     "flake": "No flakes",
     "glitter": "No glitter"
   },
@@ -392,8 +392,8 @@
     "description": "Artistic Design Theme",
     "image": "/images/phone stands/purple.jpg",
     "price": 650,
-    "color": "Multi",
-    "flake": "No flakes",
+    "color": "Purple",
+    "flake": "Golden",
     "glitter": "No glitter"
   },
   {
@@ -403,8 +403,8 @@
     "description": "Striped Design",
     "image": "/images/phone stands/stripes.jpg",
     "price": 650,
-    "color": "Multi",
-    "flake": "No flakes",
+    "color": "Purple",
+    "flake": "Golden",
     "glitter": "No glitter"
   },
   {
@@ -414,7 +414,7 @@
     "description": "Floral Tray with Dandelions",
     "image": "/images/kitchenware/floral 2.jpg",
     "price": 1200,
-    "color": "Multi",
+    "color": "Multicolored",
     "flake": "No flakes",
     "glitter": "No glitter",
     "handle": "Golden"
@@ -426,8 +426,8 @@
     "description": "Multicolor Striped Tray",
     "image": "/images/kitchenware/dt stripe.jpg",
     "price": 1200,
-    "color": "Multi",
-    "flake": "No flakes",
+    "color": "Green",
+    "flake": "Golden",
     "glitter": "No glitter",
     "handle": "Golden"
   },
@@ -438,7 +438,7 @@
     "description": "Rose Floral Tray",
     "image": "/images/kitchenware/floral.jpg",
     "price": 1200,
-    "color": "Multi",
+    "color": "Multicolored",
     "flake": "No flakes",
     "glitter": "No glitter",
     "handle": "Golden"
@@ -450,8 +450,8 @@
     "description": "Blue Flake Tray",
     "image": "/images/kitchenware/middle flake.jpg",
     "price": 1200,
-    "color": "Multi",
-    "flake": "No flakes",
+    "color": "Blue",
+    "flake": "Golden",
     "glitter": "No glitter",
     "handle": "Golden"
   },
@@ -462,8 +462,8 @@
     "description": "Flake corner Tray",
     "image": "/images/kitchenware/one corner.jpg",
     "price": 1200,
-    "color": "Multi",
-    "flake": "No flakes",
+    "color": "Pink",
+    "flake": "Golden",
     "glitter": "No glitter",
     "handle": "Golden"
   },
@@ -474,10 +474,9 @@
     "description": "Bowl with orange base",
     "image": "/images/kitchenware/plate1.jpg",
     "price": 1200,
-    "color": "Multi",
+    "color": "Orange",
     "flake": "No flakes",
-    "glitter": "No glitter",
-    "handle": "Golden"
+    "glitter": "No glitter"
   },
   {
     "id": 42,
@@ -486,8 +485,8 @@
     "description": "Striped Tray",
     "image": "/images/kitchenware/stripes.jpg",
     "price": 1200,
-    "color": "Multi",
-    "flake": "No flakes",
+    "color": "White",
+    "flake": "Golden",
     "glitter": "No glitter",
     "handle": "Golden"
   },
@@ -497,9 +496,9 @@
     "code": "HRT#08",
     "description": "Half colored design Tray",
     "image": "/images/kitchenware/tp1.jpg",
-    "price": 1200,
-    "color": "Multi",
-    "flake": "No flakes",
+    "price": 500,
+    "color": "White",
+    "flake": "Golden",
     "glitter": "No glitter",
     "handle": "Golden"
   },
@@ -509,11 +508,10 @@
     "code": "HRT#09",
     "description": "All purpose plate",
     "image": "/images/kitchenware/plate5.jpg",
-    "price": 1200,
-    "color": "Multi",
+    "price": 500,
+    "color": "Green",
     "flake": "No flakes",
-    "glitter": "No glitter",
-    "handle": "Golden"
+    "glitter": "No glitter"
   },
   {
     "id": 45,
@@ -521,11 +519,10 @@
     "code": "HRT#10",
     "description": "Bowl with golden rim",
     "image": "/images/kitchenware/plate3.jpg",
-    "price": 1200,
-    "color": "Multi",
+    "price": 500,
+    "color": "Green",
     "flake": "No flakes",
-    "glitter": "No glitter",
-    "handle": "Golden"
+    "glitter": "No glitter"
   },
   {
     "id": 46,
@@ -533,11 +530,10 @@
     "code": "HRT#11",
     "description": "Tray and Plate set",
     "image": "/images/kitchenware/tp2.jpg",
-    "price": 1200,
-    "color": "Multi",
-    "flake": "No flakes",
-    "glitter": "No glitter",
-    "handle": "Golden"
+    "price": 500,
+    "color": "White",
+    "flake": "Golden",
+    "glitter": "No glitter"
   },
   {
     "id": 47,
@@ -545,11 +541,10 @@
     "code": "HRT#12",
     "description": "Multi purpose rimmed plates",
     "image": "/images/kitchenware/plate6.jpg",
-    "price": 1200,
-    "color": "Multi",
-    "flake": "No flakes",
-    "glitter": "No glitter",
-    "handle": "Golden"
+    "price": 500,
+    "color": "White",
+    "flake": "Golden",
+    "glitter": "No glitter"
   },
   {
     "id": 48,
@@ -558,8 +553,8 @@
     "description": "Name stands with Flake Base",
     "price": 850,
     "image": "/images/others/sent1.jpg",
-    "color": "Multi",
-    "flake": "No flakes",
+    "color": "Black",
+    "flake": "Silver",
     "glitter": "No glitter"
   },
   {
@@ -569,7 +564,7 @@
     "description": "Beads with different shades",
     "price": 10,
     "image": "/images/others/bead2.jpg",
-    "color": "Multi",
+    "color": "Purple",
     "flake": "No flakes",
     "glitter": "No glitter"
   },
@@ -580,8 +575,8 @@
     "description": "Name stands with colored Base",
     "price": 700,
     "image": "/images/others/sent2.jpg",
-    "color": "Multi",
-    "flake": "No flakes",
+    "color": "White",
+    "flake": "Golden",
     "glitter": "No glitter"
   },
   {
@@ -591,7 +586,7 @@
     "description": "Multicolored beads",
     "price": 10,
     "image": "/images/others/bead3.jpg",
-    "color": "Multi",
+    "color": "Multicolored",
     "flake": "No flakes",
     "glitter": "No glitter"
   },
@@ -602,9 +597,9 @@
     "description": "Name stands with glitter base",
     "price": 1000,
     "image": "/images/others/sent3.jpg",
-    "color": "Multi",
+    "color": "Pink",
     "flake": "No flakes",
-    "glitter": "No glitter"
+    "glitter": "Rose Gold"
   },
   {
     "id": 53,
@@ -613,7 +608,7 @@
     "description": "Clear and abstract designed beads",
     "price": 7,
     "image": "/images/others/bead4.jpg",
-    "color": "Multi",
+    "color": "Multicolored",
     "flake": "No flakes",
     "glitter": "No glitter"
   },
@@ -624,8 +619,8 @@
     "description": "Name stands with glitter and flake base",
     "price": 550,
     "image": "/images/others/sent4.jpg",
-    "color": "Multi",
-    "flake": "No flakes",
+    "color": "Multicolored",
+    "flake": "Golden",
     "glitter": "No glitter"
   },
   {
@@ -635,7 +630,7 @@
     "description": "Colored Beads",
     "price": 12,
     "image": "/images/others/bead5.jpg",
-    "color": "Multi",
+    "color": "Multicolored",
     "flake": "No flakes",
     "glitter": "No glitter"
   },
@@ -646,7 +641,7 @@
     "description": "Floral name stand",
     "price": 850,
     "image": "/images/others/sent5.jpg",
-    "color": "Multi",
+    "color": "Green",
     "flake": "No flakes",
     "glitter": "No glitter"
   },
@@ -657,7 +652,7 @@
     "description": "Hair beads (Multicolored)",
     "price": 15,
     "image": "/images/others/bead6.jpg",
-    "color": "Multi",
+    "color": "Multicolored",
     "flake": "No flakes",
     "glitter": "No glitter"
   },
@@ -668,8 +663,8 @@
     "description": "Save the date tray stands",
     "price": 2000,
     "image": "/images/others/sent6.jpg",
-    "color": "Multi",
+    "color": "Blue",
     "flake": "No flakes",
-    "glitter": "No glitter"
+    "glitter": "Silver"
   }
 ]
