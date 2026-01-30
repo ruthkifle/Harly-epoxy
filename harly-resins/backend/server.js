@@ -24,7 +24,7 @@ const server = http.createServer(async (req, res) => {
     return;
   }
 
-  // ========= GET ALL PRODUCTS =========
+  //GET ALL PRODUCT
   if (req.url === "/api/products" && req.method === "GET") {
     try {
       const products = await Product.find({});
@@ -37,7 +37,7 @@ const server = http.createServer(async (req, res) => {
     return;
   }
 
-  // ========= FILTER PRODUCTS =========
+  //FILTER PRODUCTS
   if (req.url === "/api/products/filter" && req.method === "POST") {
     let body = "";
     req.on("data", chunk => (body += chunk));
@@ -46,7 +46,6 @@ const server = http.createServer(async (req, res) => {
         const f = JSON.parse(body);
         let query = {};
 
-        // 1. Basic equality filters (Category, Color, Flake, etc.)
         const fields = [ 'category', 'color', 'flake', 'glitter', 'chain', 'handle', 'tassle' ];
         fields.forEach(field => {
           if (f[ field ] && f[ field ] !== "All" && f[ field ] !== "all") {
@@ -54,7 +53,6 @@ const server = http.createServer(async (req, res) => {
           }
         });
 
-        // 2. Price Filter Logic
         if (f.maxPrice) {
           query.price = { $lte: Number(f.maxPrice) }; // Less than or equal to
         }
@@ -70,7 +68,7 @@ const server = http.createServer(async (req, res) => {
     return;
   }
 
-  // ========= SUBMIT ORDER =========
+  //SUBMIT ORDER
   if (req.url === "/api/orders" && req.method === "POST") {
     let body = "";
     req.on("data", chunk => (body += chunk));
@@ -101,7 +99,7 @@ const server = http.createServer(async (req, res) => {
     return;
   }
 
-  // ========= SERVE IMAGES =========
+  //SERVE IMAGES
   if (req.url.startsWith("/images/")) {
     const filePath = path.join(__dirname, req.url);
     if (fs.existsSync(filePath)) {
@@ -119,5 +117,5 @@ const server = http.createServer(async (req, res) => {
 });
 
 server.listen(PORT, () => {
-  console.log(`🚀 Harly Backend running on http://localhost:${PORT}`);
+  console.log(`Harly Backend running on http://localhost:${PORT}`);
 });
