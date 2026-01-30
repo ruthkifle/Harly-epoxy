@@ -43,12 +43,20 @@ const server = http.createServer(async (req, res) => {
     req.on("data", chunk => (body += chunk));
     req.on("end", async () => {
       try {
-        const { category, color } = JSON.parse(body);
+        const f = JSON.parse(body);
         let query = {};
 
-        if (category && category !== "All") query.category = category;
-        if (color && color !== "All") {
-          query.description = { $regex: color, $options: "i" };
+        // 1. Basic equality filters (Category, Color, Flake, etc.)
+        const fields = [ 'category', 'color', 'flake', 'glitter', 'chain', 'handle', 'tassle' ];
+        fields.forEach(field => {
+          if (f[ field ] && f[ field ] !== "All" && f[ field ] !== "all") {
+            query[ field ] = f[ field ];
+          }
+        });
+
+        // 2. Price Filter Logic
+        if (f.maxPrice) {
+          query.price = { $lte: Number(f.maxPrice) }; // Less than or equal to
         }
 
         const filtered = await Product.find(query);

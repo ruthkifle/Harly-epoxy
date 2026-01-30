@@ -10,7 +10,7 @@ export default function Catalog({ products, onFilter, loading }) {
   const [ productList, setProductList ] = useState([]);
 
 
-  const [ loading, setLoading ] = useState(true);
+
 
   // ATTRIBUTE FILTERS
   const [ filters, setFilters ] = useState({
