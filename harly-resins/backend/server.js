@@ -2,6 +2,8 @@ const http = require("http");
 const fs = require("fs");
 const path = require("path");
 const products = require("./products.json");
+const connectDB = require("./db");
+connectDB();
 
 const PORT = 4000;
 
