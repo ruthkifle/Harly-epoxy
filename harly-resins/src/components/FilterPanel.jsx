@@ -28,6 +28,7 @@ export default function FilterPanel({ show, onClose, filters, setFilters, onAppl
   };
 
   return (
+    
     <div className={`filter-panel ${show ? "open" : ""}`}>
       <div className="filter-header">
         <h2>Filters</h2>

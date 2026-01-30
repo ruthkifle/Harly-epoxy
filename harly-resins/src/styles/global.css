@@ -843,3 +843,20 @@ h3 {
     font-weight: bold;
     cursor: pointer;
 }
+@media (max-width: 480px) {
+    .cart-drawer {
+        width: 100%;
+        right: -100%;
+    }
+
+    .cart-drawer.open {
+        right: 0;
+    }
+}
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+}

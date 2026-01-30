@@ -3,7 +3,7 @@ import { useCart } from '../context/CartContext';
 import CheckoutForm from './CheckoutForm'; // Make sure this file exists in components
 
 const CartDrawer = ({ isOpen, onClose }) => {
-    const { cart, addToCart, removeFromCart, total } = useCart();
+    const { cart, addToCart,decreaseQuantity ,removeFromCart, total } = useCart();
     const [ step, setStep ] = useState('cart'); // Tracks if we are at 'cart' or 'checkout'
 
     // Reset to cart view whenever drawer is closed
@@ -32,7 +32,8 @@ const CartDrawer = ({ isOpen, onClose }) => {
                                         <h4>{item.name}</h4>
                                         <p>{item.price} ETB x {item.quantity}</p>
                                         <div className="qty-controls">
-                                            <button onClick={() => removeFromCart(item.id)}>-</button>
+                                            <button onClick={() => decreaseQuantity(item.id)}>-</button>
+
                                             <span>{item.quantity}</span>
                                             <button onClick={() => addToCart(item)}>+</button>
                                         </div>
