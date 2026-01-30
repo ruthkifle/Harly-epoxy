@@ -1,18 +1,19 @@
 const http = require("http");
+const fs = require("fs");
 const path = require("path");
-const products = require("./products.json");
 const connectDB = require("./db");
-connectDB();
-const mongoose = require("mongoose");
+const Product = require("./models/product");
+const Order = require("./models/Order");
 
-mongoose.connect("mongodb://localhost:27017/harlyDB")
-  .then(() => console.log("✅ Connected to MongoDB"))
-  .catch(err => console.error("❌ MongoDB Connection Error:", err));
+// Connect to MongoDB
+connectDB();
 
 const PORT = 4000;
 
-const server = http.createServer((req, res) => {
-  // Enable CORS for React
+const server = http.createServer(async (req, res) => {
+  console.log(`${req.method} request for ${req.url}`);
+
+  // CORS Headers
   res.setHeader("Access-Control-Allow-Origin", "http://localhost:5173");
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
@@ -23,83 +24,92 @@ const server = http.createServer((req, res) => {
     return;
   }
 
-  const Product = require("./models/product");
-
+  // ========= GET ALL PRODUCTS =========
   if (req.url === "/api/products" && req.method === "GET") {
-    Product.find()
-      .then(products => {
+    try {
+      const products = await Product.find({});
+      res.writeHead(200, { "Content-Type": "application/json" });
+      res.end(JSON.stringify(products));
+    } catch (err) {
+      res.writeHead(500);
+      res.end(JSON.stringify({ error: "Database Error" }));
+    }
+    return;
+  }
+
+  // ========= FILTER PRODUCTS =========
+  if (req.url === "/api/products/filter" && req.method === "POST") {
+    let body = "";
+    req.on("data", chunk => (body += chunk));
+    req.on("end", async () => {
+      try {
+        const { category, color } = JSON.parse(body);
+        let query = {};
+
+        if (category && category !== "All") query.category = category;
+        if (color && color !== "All") {
+          query.description = { $regex: color, $options: "i" };
+        }
+
+        const filtered = await Product.find(query);
         res.writeHead(200, { "Content-Type": "application/json" });
-        res.end(JSON.stringify(products));
-      })
-      .catch(err => {
-        res.writeHead(500, { "Content-Type": "application/json" });
-        res.end(JSON.stringify({ error: "Failed to fetch products" }));
-      });
+        res.end(JSON.stringify(filtered));
+      } catch (err) {
+        res.writeHead(500);
+        res.end(JSON.stringify({ error: "Filter failed" }));
+      }
+    });
     return;
   }
 
-  // ========= GET PRODUCT BY ID =========
-  if (req.url.startsWith("/api/products/") && req.method === "GET") {
-    const id = parseInt(req.url.split("/").pop());
-    const product = products.find(p => p.id === id);
+  // ========= SUBMIT ORDER =========
+  if (req.url === "/api/orders" && req.method === "POST") {
+    let body = "";
+    req.on("data", chunk => (body += chunk));
+    req.on("end", async () => {
+      try {
+        const orderData = JSON.parse(body);
+        const newOrder = new Order({
+          customer: orderData.customer,
+          items: orderData.items,
+          total: orderData.total
+        });
 
-    res.writeHead(200, { "Content-Type": "application/json" });
-    res.end(JSON.stringify(product || { error: "Not found" }));
+        await newOrder.save();
+        console.log("✅ Order Saved to MongoDB:", newOrder._id);
+
+        res.writeHead(201, { "Content-Type": "application/json" });
+        res.end(JSON.stringify({
+          success: true,
+          message: "Order received!",
+          orderId: newOrder._id
+        }));
+      } catch (err) {
+        console.error("Order Error:", err);
+        res.writeHead(400);
+        res.end(JSON.stringify({ error: "Failed to save order" }));
+      }
+    });
     return;
   }
-  // Serve images statically from backend/public
+
+  // ========= SERVE IMAGES =========
   if (req.url.startsWith("/images/")) {
-    const fs = require("fs");
-    const path = require("path");
-
     const filePath = path.join(__dirname, req.url);
-
     if (fs.existsSync(filePath)) {
-      res.writeHead(200, { "Content-Type": "image/jpeg" });
+      const ext = path.extname(filePath).toLowerCase();
+      const contentType = ext === ".png" ? "image/png" : "image/jpeg";
+      res.writeHead(200, { "Content-Type": contentType });
       return fs.createReadStream(filePath).pipe(res);
     }
-
     res.writeHead(404);
     return res.end();
   }
 
-  // ========= FILTER ENDPOINT (placeholder) =========
-  if (req.url === "/api/products/filter" && req.method === "POST") {
-    let body = "";
-    req.on("data", chunk => (body += chunk));
-
-    req.on("end", () => {
-      const filters = JSON.parse(body);
-      console.log("Filters received:", filters);
-
-      res.writeHead(200, { "Content-Type": "application/json" });
-      res.end(JSON.stringify({ ok: true, received: filters }));
-    });
-
-    return;
-  }
-
-  // ========= ADD TO CART PLACEHOLDER =========
-  if (req.url === "/api/cart" && req.method === "POST") {
-    let body = "";
-    req.on("data", chunk => (body += chunk));
-
-    req.on("end", () => {
-      const item = JSON.parse(body);
-      console.log("Cart item received:", item);
-
-      res.writeHead(200, { "Content-Type": "application/json" });
-      res.end(JSON.stringify({ success: true, added: item }));
-    });
-
-    return;
-  }
-
-  // ========= DEFAULT NOT FOUND =========
-  res.writeHead(404, { "Content-Type": "application/json" });
+  res.writeHead(404);
   res.end(JSON.stringify({ error: "Route not found" }));
 });
 
 server.listen(PORT, () => {
-  console.log(`Backend running on http://localhost:${PORT}`);
+  console.log(`🚀 Harly Backend running on http://localhost:${PORT}`);
 });

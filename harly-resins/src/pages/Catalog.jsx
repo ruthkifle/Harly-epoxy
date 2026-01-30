@@ -3,20 +3,14 @@ import CategoryFilter from "../components/CategoryFilter";
 import ProductCard from "../components/ProductCard";
 import "../styles/global.css"
 
-export default function Catalog() {
+export default function Catalog({ products, onFilter, loading }) {
   // CATEGORY FILTER (All, Keychains, etc.)
   const [ selectedCategory, setSelectedCategory ] = useState("all");
 
-  const [productList, setProductList] = useState([]);
+  const [ productList, setProductList ] = useState([]);
 
-  useEffect(() => {
-    fetch("http://localhost:4000/api/products")
-      .then(res => res.json())
-      .then(data => setProductList(data))
-      .catch(err => console.error("Error fetching products:", err));
-  }, []);
 
-  const [loading, setLoading] = useState(true);
+  const [ loading, setLoading ] = useState(true);
 
   // ATTRIBUTE FILTERS
   const [ filters, setFilters ] = useState({
@@ -63,12 +57,19 @@ export default function Catalog() {
   const filteredProducts = filtered;
 
   function toggleFilter(key, value) {
-    setFilters(prev => ({
-      ...prev,
-      [ key ]: prev[ key ].includes(value)
-        ? prev[ key ].filter(v => v !== value)
-        : [ ...prev[ key ], value ]
-    }));
+    const updatedValue = filters[ key ].includes(value)
+      ? filters[ key ].filter(v => v !== value)
+      : [ ...filters[ key ], value ];
+
+    const newFilters = { ...filters, [ key ]: updatedValue };
+
+    setFilters(newFilters);
+
+    // This sends the request to the Backend/MongoDB!
+    onFilter({
+      category: selectedCategory,
+      color: newFilters.color[ 0 ] || "All"
+    });
   }
 
   return (
@@ -90,7 +91,10 @@ export default function Catalog() {
 
       <CategoryFilter
         selectedCategory={selectedCategory}
-        onCategoryChange={setSelectedCategory}
+        onCategoryChange={(cat) => {
+          setSelectedCategory(cat);
+          onFilter({ category: cat, color: filters.color[ 0 ] || "All" });
+        }}
       />
 
       <button className="filter-toggle" onClick={() => setShowFilter(true)}>
@@ -246,7 +250,7 @@ export default function Catalog() {
 
       {/* PRODUCT GRID */}
       <div className="product-grid">
-        {filteredProducts.map(item => (
+        {products.map(item => (
           <ProductCard key={item.id} product={item} />
         ))}
       </div>
