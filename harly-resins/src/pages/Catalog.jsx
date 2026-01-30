@@ -49,7 +49,16 @@ export default function Catalog({ products, onFilter, loading }) {
     };
     setFilters(resetAttributes);
 
-    applyFiltersToBackend(resetAttributes, cat);
+    onFilter({
+      category: cat,
+      color: "All",
+      flake: "All",
+      glitter: "All",
+      chain: "All",
+      tassle: "All",
+      handle: "All"
+    });
+
   };
 
   return (
@@ -79,7 +88,7 @@ export default function Catalog({ products, onFilter, loading }) {
       {/* FILTER BUTTON (Opens the Side Panel) */}
       <div className="filter-controls">
         <button className="filter-toggle" onClick={() => setShowFilter(true)}>
-          <span className="filter-icon">⚙</span> FILTER {selectedCategory !== "all" ? selectedCategory.toUpperCase() : ""}
+          <span className="filter-icon"></span> FILTER {selectedCategory !== "all" ? selectedCategory.toUpperCase() : ""}
         </button>
       </div>
 
@@ -107,11 +116,11 @@ export default function Catalog({ products, onFilter, loading }) {
             ))
           ) : (
             <div className="no-results">
-              <h3>No items found.</h3>
-              <p>We couldn't find anything matching those specific filters. Try clearing some options!</p>
+              <h3>No matching items</h3>
+              <p>Try resetting your filters to see more products.</p>
               <button
-                className="reset-btn"
-                onClick={() => handleCategoryChange("all")}
+                className="view-all-btn"
+                onClick={() => handleCategoryChange("all")} // This resets everything
               >
                 View All Products
               </button>
