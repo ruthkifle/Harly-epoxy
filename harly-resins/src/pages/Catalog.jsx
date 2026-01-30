@@ -10,8 +10,6 @@ export default function Catalog({ products, onFilter, loading }) {
   const [ productList, setProductList ] = useState([]);
 
 
-
-
   // ATTRIBUTE FILTERS
   const [ filters, setFilters ] = useState({
     color: [],
