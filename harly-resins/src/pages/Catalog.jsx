@@ -42,7 +42,7 @@ export default function Catalog({ products, onFilter, loading }) {
   }
 
   // PRODUCT FILTERING LOGIC
-  let filtered = selectedCategory === "all"
+  /*let filtered = selectedCategory === "all"
     ? productList
     : productList.filter(p => p.category === selectedCategory);
 
@@ -50,9 +50,9 @@ export default function Catalog({ products, onFilter, loading }) {
     if (filters[ key ].length > 0) {
       filtered = filtered.filter(p => filters[ key ].includes(p[ key ]));
     }
-  });
+  });*/
 
-  const filteredProducts = filtered;
+  //const filteredProducts = filtered;
 
   function toggleFilter(key, value) {
     const updatedValue = filters[ key ].includes(value)
