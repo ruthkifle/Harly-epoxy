@@ -27,6 +27,7 @@ export default function FilterPanel({ show, onClose, filters, setFilters }) {
   };
 
   return (
+    
     <div className={`filter-panel ${show ? "open" : ""}`}>
       <button className="close-btn" onClick={onClose}>✕</button>
       <h2>Filters</h2>
