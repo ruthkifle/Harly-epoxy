@@ -4,6 +4,11 @@ const path = require("path");
 const products = require("./products.json");
 const connectDB = require("./db");
 connectDB();
+const mongoose = require("mongoose");
+
+mongoose.connect("mongodb://localhost:27017/harlyDB")
+  .then(() => console.log("✅ Connected to MongoDB"))
+  .catch(err => console.error("❌ MongoDB Connection Error:", err));
 
 const PORT = 4000;
 
@@ -23,11 +28,19 @@ const server = http.createServer((req, res) => {
     return;
   }
 
-  // ========= GET ALL PRODUCTS =========
+  const Product = require("./models/product");
+
   if (req.url === "/api/products" && req.method === "GET") {
-    res.writeHead(200, { "Content-Type": "application/json" });
-    res.end(JSON.stringify(products));
-    return;
+      Product.find()
+          .then(products => {
+              res.writeHead(200, { "Content-Type": "application/json" });
+              res.end(JSON.stringify(products));
+          })
+          .catch(err => {
+              res.writeHead(500, { "Content-Type": "application/json" });
+              res.end(JSON.stringify({ error: "Failed to fetch products" }));
+          });
+      return;
   }
 
   // ========= GET PRODUCT BY ID =========
