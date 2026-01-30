@@ -55,21 +55,27 @@ export default function Catalog({ products, onFilter, loading }) {
   //const filteredProducts = filtered;
 
   function toggleFilter(key, value) {
-    const updatedValue = filters[ key ].includes(value)
-      ? filters[ key ].filter(v => v !== value)
-      : [ ...filters[ key ], value ];
-
-    const newFilters = { ...filters, [ key ]: updatedValue };
-
+    // 1. Update the local UI state (allowing only one selection at a time for simplicity)
+    const newFilters = { ...filters, [ key ]: filters[ key ].includes(value) ? [] : [ value ] };
     setFilters(newFilters);
 
-    // This sends the request to the Backend/MongoDB!
-    onFilter({
+    // 2. Build the criteria object for the Backend
+    const criteria = {
       category: selectedCategory,
-      color: newFilters.color[ 0 ] || "All"
-    });
-  }
+      color: newFilters.color[ 0 ] || "All",
+      flake: newFilters.flake[ 0 ] || "All",
+      glitter: newFilters.glitter[ 0 ] || "All",
+      chain: newFilters.chain[ 0 ] || "All",
+      tassle: newFilters.tassle[ 0 ] || "All",
+      handle: newFilters.handle[ 0 ] || "All"
+    };
 
+    // 3. THIS IS THE SANITY CHECK: 
+    // Open your browser console (F12) to see this!
+    console.log("🚀 Sending this to backend:", criteria);
+
+    onFilter(criteria);
+  }
   return (
     <div className="catalog-page">
 
