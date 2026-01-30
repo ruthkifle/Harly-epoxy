@@ -1,22 +1,15 @@
 const http = require("http");
-const fs = require("fs");
 const path = require("path");
 const products = require("./products.json");
-const connectDB = require("./db");
-connectDB();
 
 const PORT = 4000;
 
 const server = http.createServer((req, res) => {
-  // 1. Logger - See what's happening in your terminal
-  console.log(`${req.method} request for ${req.url}`);
-
-  // 2. Enable CORS for React (Port 5173)
+  // Enable CORS for React
   res.setHeader("Access-Control-Allow-Origin", "http://localhost:5173");
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
 
-  // Handle Pre-flight request
   if (req.method === "OPTIONS") {
     res.writeHead(204);
     res.end();
@@ -39,17 +32,15 @@ const server = http.createServer((req, res) => {
     res.end(JSON.stringify(product || { error: "Not found" }));
     return;
   }
-
-  // ========= SERVE IMAGES STATICALLY =========
+  // Serve images statically from backend/public
   if (req.url.startsWith("/images/")) {
+    const fs = require("fs");
+    const path = require("path");
+
     const filePath = path.join(__dirname, req.url);
 
     if (fs.existsSync(filePath)) {
-      // Basic logic to detect extension
-      const ext = path.extname(filePath).toLowerCase();
-      const contentType = ext === ".png" ? "image/png" : "image/jpeg";
-
-      res.writeHead(200, { "Content-Type": contentType });
+      res.writeHead(200, { "Content-Type": "image/jpeg" });
       return fs.createReadStream(filePath).pipe(res);
     }
 
@@ -57,47 +48,35 @@ const server = http.createServer((req, res) => {
     return res.end();
   }
 
-  // ========= SUBMIT ORDER (The New Part!) =========
-  if (req.url === "/api/orders" && req.method === "POST") {
+  // ========= FILTER ENDPOINT (placeholder) =========
+  if (req.url === "/api/products/filter" && req.method === "POST") {
     let body = "";
     req.on("data", chunk => (body += chunk));
 
     req.on("end", () => {
-      try {
-        const orderData = JSON.parse(body);
+      const filters = JSON.parse(body);
+      console.log("Filters received:", filters);
 
-        // This will show up in your TERMINAL (Command Prompt)
-        console.log("\n✨ NEW ORDER RECEIVED ✨");
-        console.log("Customer:", orderData.customer.fullName);
-        console.log("Phone:", orderData.customer.phone);
-        console.log("Items:", orderData.items.length);
-        console.log("Total:", orderData.total, "ETB");
-        console.log("---------------------------\n");
-
-        // Send success response back to React
-        res.writeHead(201, { "Content-Type": "application/json" });
-        res.end(JSON.stringify({
-          success: true,
-          message: "Order captured by Harly Backend!",
-          orderId: Math.floor(1000 + Math.random() * 9000)
-        }));
-      } catch (err) {
-        res.writeHead(400, { "Content-Type": "application/json" });
-        res.end(JSON.stringify({ error: "Invalid JSON" }));
-      }
+      res.writeHead(200, { "Content-Type": "application/json" });
+      res.end(JSON.stringify({ ok: true, received: filters }));
     });
+
     return;
   }
 
-  // ========= PLACEHOLDER ENDPOINTS =========
-  if ((req.url === "/api/products/filter" || req.url === "/api/cart") && req.method === "POST") {
+  // ========= ADD TO CART PLACEHOLDER =========
+  if (req.url === "/api/cart" && req.method === "POST") {
     let body = "";
     req.on("data", chunk => (body += chunk));
+
     req.on("end", () => {
-      const data = JSON.parse(body);
+      const item = JSON.parse(body);
+      console.log("Cart item received:", item);
+
       res.writeHead(200, { "Content-Type": "application/json" });
-      res.end(JSON.stringify({ success: true, received: data }));
+      res.end(JSON.stringify({ success: true, added: item }));
     });
+
     return;
   }
 
@@ -107,5 +86,5 @@ const server = http.createServer((req, res) => {
 });
 
 server.listen(PORT, () => {
-  console.log(`Harly Backend running on http://localhost:${PORT}`);
+  console.log(`Backend running on http://localhost:${PORT}`);
 });
