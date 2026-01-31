@@ -1,20 +1,37 @@
+require('dotenv').config();
 const http = require("http");
 const fs = require("fs");
 const path = require("path");
 const connectDB = require("./db");
-const Product = require("./models/product");
+const Product = require("./models/Product");
 const Order = require("./models/Order");
 
-// Connect to MongoDB
 connectDB();
+const PORT = process.env.PORT || 4000;
 
-const PORT = 4000;
+
+const getRequestBody = (req) => {
+  return new Promise((resolve, reject) => {
+    let body = "";
+    req.on("data", chunk => (body += chunk));
+    req.on("error", (err) => reject(err));
+    req.on("end", () => {
+      try {
+        resolve(body ? JSON.parse(body) : {});
+      } catch (e) {
+        reject(new Error("Invalid JSON"));
+      }
+    });
+  });
+};
+
 
 const server = http.createServer(async (req, res) => {
   console.log(`${req.method} request for ${req.url}`);
 
-  // CORS Headers
-  res.setHeader("Access-Control-Allow-Origin", "http://localhost:5173");
+
+  const origin = process.env.FRONTEND_URL || "http://localhost:5173";
+  res.setHeader("Access-Control-Allow-Origin", origin);
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
 
@@ -24,7 +41,6 @@ const server = http.createServer(async (req, res) => {
     return;
   }
 
-  // ========= GET ALL PRODUCTS =========
   if (req.url === "/api/products" && req.method === "GET") {
     try {
       const products = await Product.find({});
@@ -37,87 +53,92 @@ const server = http.createServer(async (req, res) => {
     return;
   }
 
-  // ========= FILTER PRODUCTS =========
+
   if (req.url === "/api/products/filter" && req.method === "POST") {
-    let body = "";
-    req.on("data", chunk => (body += chunk));
-    req.on("end", async () => {
-      try {
-        const f = JSON.parse(body);
-        let query = {};
+    try {
+      const f = await getRequestBody(req);
+      let query = {};
 
-        // 1. Basic equality filters (Category, Color, Flake, etc.)
-        const fields = [ 'category', 'color', 'flake', 'glitter', 'chain', 'handle', 'tassle' ];
-        fields.forEach(field => {
-          if (f[ field ] && f[ field ] !== "All" && f[ field ] !== "all") {
-            query[ field ] = f[ field ];
-          }
-        });
 
-        // 2. Price Filter Logic
-        if (f.maxPrice) {
-          query.price = { $lte: Number(f.maxPrice) }; // Less than or equal to
+      const fields = [ 'category', 'color', 'flake', 'glitter', 'chain', 'handle', 'tassle' ];
+      fields.forEach(field => {
+        if (f[ field ] && f[ field ].toLowerCase() !== "all") {
+          query[ field ] = { $regex: new RegExp(`^${f[ field ]}$`, "i") };
         }
+      });
 
-        const filtered = await Product.find(query);
-        res.writeHead(200, { "Content-Type": "application/json" });
-        res.end(JSON.stringify(filtered));
-      } catch (err) {
-        res.writeHead(500);
-        res.end(JSON.stringify({ error: "Filter failed" }));
+
+      if (f.maxPrice) {
+        query.price = { $lte: Number(f.maxPrice) };
       }
-    });
+
+      const filtered = await Product.find(query);
+      res.writeHead(200, { "Content-Type": "application/json" });
+      res.end(JSON.stringify(filtered));
+    } catch (err) {
+      res.writeHead(500);
+      res.end(JSON.stringify({ error: "Filter failed" }));
+    }
     return;
   }
 
-  // ========= SUBMIT ORDER =========
+
   if (req.url === "/api/orders" && req.method === "POST") {
-    let body = "";
-    req.on("data", chunk => (body += chunk));
-    req.on("end", async () => {
-      try {
-        const orderData = JSON.parse(body);
-        const newOrder = new Order({
-          customer: orderData.customer,
-          items: orderData.items,
-          total: orderData.total
-        });
+    try {
+      const orderData = await getRequestBody(req);
+      const newOrder = new Order({
+        customer: orderData.customer,
+        items: orderData.items,
+        total: orderData.total
+      });
 
-        await newOrder.save();
-        console.log("✅ Order Saved to MongoDB:", newOrder._id);
+      await newOrder.save();
+      console.log("✅ Order Saved:", newOrder._id);
 
-        res.writeHead(201, { "Content-Type": "application/json" });
-        res.end(JSON.stringify({
-          success: true,
-          message: "Order received!",
-          orderId: newOrder._id
-        }));
-      } catch (err) {
-        console.error("Order Error:", err);
-        res.writeHead(400);
-        res.end(JSON.stringify({ error: "Failed to save order" }));
-      }
-    });
+      res.writeHead(201, { "Content-Type": "application/json" });
+      res.end(JSON.stringify({
+        success: true,
+        message: "Order received!",
+        orderId: newOrder._id
+      }));
+    } catch (err) {
+      console.error("Order Error:", err);
+      res.writeHead(400);
+      res.end(JSON.stringify({ error: "Failed to save order" }));
+    }
     return;
   }
 
-  // ========= SERVE IMAGES =========
+
   if (req.url.startsWith("/images/")) {
     const filePath = path.join(__dirname, req.url);
-    if (fs.existsSync(filePath)) {
+
+    fs.access(filePath, fs.constants.F_OK, (err) => {
+      if (err) {
+        res.writeHead(404);
+        return res.end(JSON.stringify({ error: "Image not found" }));
+      }
+
       const ext = path.extname(filePath).toLowerCase();
-      const contentType = ext === ".png" ? "image/png" : "image/jpeg";
-      res.writeHead(200, { "Content-Type": contentType });
-      return fs.createReadStream(filePath).pipe(res);
-    }
-    res.writeHead(404);
-    return res.end();
+      const mimeTypes = {
+        '.png': 'image/png',
+        '.jpg': 'image/jpeg',
+        '.jpeg': 'image/jpeg',
+        '.webp': 'image/webp'
+      };
+
+      res.writeHead(200, { "Content-Type": mimeTypes[ ext ] || "application/octet-stream" });
+      fs.createReadStream(filePath).pipe(res);
+    });
+    return;
   }
+
 
   res.writeHead(404);
   res.end(JSON.stringify({ error: "Route not found" }));
 });
 
+
 server.listen(PORT, () => {
-  console.log(`🚀 Harly Backend running on http://localhost:${PORT}`);
+  console.log(`Harly Backend running on http://localhost:${PORT}`);
 });

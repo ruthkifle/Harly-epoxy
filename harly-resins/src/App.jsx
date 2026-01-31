@@ -2,10 +2,15 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./styles/global.css";
 
+
+
+import { fetchProducts, filterProducts } from "./services/api";
+
 import { CartProvider } from "./context/CartContext";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import CartDrawer from "./components/CartDrawer";
+
 
 import Home from "./pages/Home";
 import Catalog from "./pages/Catalog";
@@ -16,36 +21,32 @@ function App() {
   const [ isCartOpen, setIsCartOpen ] = useState(false);
   const [ products, setProducts ] = useState([]);
   const [ loading, setLoading ] = useState(true);
+  const [ error, setError ] = useState(null);
 
-  // 1. Initial Fetch of all products from MongoDB
+
   useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const response = await fetch("http://localhost:4000/api/products");
-        const data = await response.json();
+    const loadInitialData = async () => {
+      setLoading(true);
+      const data = await fetchProducts();
+
+      if (data.length === 0) {
+        setError("Could not load products. Please check if the server is running.");
+      } else {
         setProducts(data);
-        setLoading(false);
-      } catch (error) {
-        console.error("Error fetching products:", error);
-        setLoading(false);
+        setError(null);
       }
+      setLoading(false);
     };
-    fetchProducts();
+
+    loadInitialData();
   }, []);
 
-  // 2. Filter Function to be passed to Catalog
+
   const handleFilter = async (filterCriteria) => {
-    try {
-      const response = await fetch("http://localhost:4000/api/products/filter", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(filterCriteria)
-      });
-      const data = await response.json();
-      setProducts(data);
-    } catch (error) {
-      console.error("Filter error:", error);
-    }
+    setLoading(true);
+    const filteredData = await filterProducts(filterCriteria);
+    setProducts(filteredData);
+    setLoading(false);
   };
 
   return (
@@ -59,6 +60,8 @@ function App() {
         />
 
         <main className="page-wrapper">
+          {error && <div className="error-banner">{error}</div>}
+
           <Routes>
             <Route path="/" element={<Home />} />
             <Route

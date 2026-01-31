@@ -1,7 +1,7 @@
+import React from "react";
 import "../styles/global.css";
 
 export default function CategoryFilter({ selectedCategory, onCategoryChange }) {
-  // We list the categories in an array to make the code cleaner and easier to manage
   const categories = [
     { id: "all", label: "All" },
     { id: "keychain", label: "Keychains" },
@@ -12,13 +12,12 @@ export default function CategoryFilter({ selectedCategory, onCategoryChange }) {
   ];
 
   return (
-    <nav className="choices">
-      <div className="drop2">
+    <nav className="category-nav-container fadeIn">
+      <div className="category-scroll-wrapper">
         {categories.map((cat) => (
           <button
             key={cat.id}
-            // If this button matches the selected category, add the 'active' class
-            className={selectedCategory === cat.id ? "active" : ""}
+            className={`category-btn ${selectedCategory === cat.id ? "active" : ""}`}
             onClick={() => onCategoryChange(cat.id)}
           >
             {cat.label}

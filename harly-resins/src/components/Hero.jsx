@@ -1,28 +1,24 @@
-import { useState } from "react";
+import React from "react";
+import { Link } from "react-router-dom";
 import "../styles/global.css";
 
-export default function Header() {
-  const [ menuOpen, setMenuOpen ] = useState(false);
-
+const Hero = ({ title, subtitle, showBtn = false }) => {
   return (
-    <header className="header">
-      <div className="logo">HARLY</div>
-      <button className="menu" onClick={() => setMenuOpen(!menuOpen)}>☰</button>
-      <nav className={`navs ${menuOpen ? "show" : ""}`}>
-        <a href="/">Home</a>
-        <div className="dropdown">
-          <span className="button">Products</span>
-          <div className="dropcontent">
-            <a href="/catalog#keychain">Keychains</a>
-            <a href="/catalog#bookmark">Bookmarks</a>
-            <a href="/catalog#phonestand">Phonestands</a>
-            <a href="/catalog#kitchenware">Kitchenware</a>
-            <a href="/catalog#others">Others</a>
+    <section className="hero-section fadeIn">
+      <div className="hero-content">
+        <h1>{title}</h1>
+        <p>{subtitle}</p>
+
+        {showBtn && (
+          <div>
+            <Link to="/catalog" className="view-all-btn">
+              Shop the Collection
+            </Link>
           </div>
-        </div>
-        <a href="/about">About</a>
-        <a href="/contact">Contact</a>
-      </nav>
-    </header>
+        )}
+      </div>
+    </section>
   );
-}
+};
+
+export default Hero;

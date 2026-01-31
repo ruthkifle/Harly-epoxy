@@ -1,18 +1,26 @@
 const mongoose = require("mongoose");
 
 const ProductSchema = new mongoose.Schema({
-    id: Number,
-    category: String,
-    code: String,
+
+    category: { type: String, required: true, index: true },
+    code: { type: String, unique: true },
     description: String,
-    image: String,
-    price: { type: Number, required: true },
-    color: { type: String, required: true }, // Not optional
-    flake: { type: String, default: "No flakes" }, // Optional
-    glitter: { type: String, default: "No glitter" }, // Optional
-    chain: String,   // Logic will handle this for keychains
-    handle: String,  // Logic will handle this for trays
-    tassle: String   // Logic will handle this for bookmarks
+    image: { type: String, required: true },
+    price: { type: Number, required: true, min: 0 },
+
+    color: { type: String, required: true, lowercase: true, trim: true },
+    flake: { type: String, default: "none", lowercase: true },
+    glitter: { type: String, default: "none", lowercase: true },
+
+
+    chain: { type: String, default: null },
+    handle: { type: String, default: null },
+    tassle: { type: String, default: null }
+}, {
+    timestamps: true
 });
+
+
+ProductSchema.index({ description: 'text', code: 'text' });
 
 module.exports = mongoose.model("Product", ProductSchema);

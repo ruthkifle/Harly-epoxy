@@ -1,123 +1,118 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
+import Hero from '../components/Hero';
 import "../styles/global.css";
 
 const Contact = () => {
-    const [ formData, setFormData ] = useState({
-        name: '',
-        email: '',
-        subject: 'General Inquiry',
-        message: ''
-    });
-
+    const [ isSubmitting, setIsSubmitting ] = useState(false);
     const [ submitted, setSubmitted ] = useState(false);
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({ ...formData, [ name ]: value });
-    };
-
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log('Form Submitted:', formData);
-        setSubmitted(true);
-    };
+        setIsSubmitting(true);
 
-    if (submitted) {
-        return (
-            <div className="container mt-2 fade-in" id="form-success">
-                <h2>Thank You, {formData.name}!</h2>
-                <p>Your message has been received. We'll get back to you soon.</p>
-                <button className="reset-button" onClick={() => setSubmitted(false)}>
-                    Send Another Message
-                </button>
-            </div>
-        );
-    }
+        const formData = new FormData(e.target);
+
+        try {
+
+            const response = await fetch("https://formsubmit.co/ajax/harlyresins@gmail.com", {
+                method: "POST",
+                body: formData
+            });
+
+            if (response.ok) {
+                setSubmitted(true);
+            } else {
+                throw new Error("Form submission failed");
+            }
+        } catch (error) {
+            console.error(error);
+            alert("Could not send message. Please try again later.");
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
 
     return (
         <div className="contact-page-container">
-            {/* HERO SECTION */}
-            <section className="hero-section">
-                <div className="hero-content">
-                    <h1>Contact Us</h1>
-                    <p>We'd love to hear from you!</p>
-                </div>
-            </section>
+            {/* 1. HERO SECTION */}
+            <Hero title="Contact Us" subtitle="We'd love to hear from you!" />
 
             <div className="container">
-                {/* GET IN TOUCH */}
+                {/* 2. GET IN TOUCH */}
                 <section className="contact-info text-center mt-2">
-                    <h1>Get in Touch</h1>
-                    <p className="mb-2">If you have any questions or inquiries, reach out through these channels:</p>
+                    <h2 className="section-title">Get in Touch</h2>
+                    <p className="mb-2">Reach out through our official channels:</p>
 
                     <div className="contact-links-list">
-                        <h4>Call us: <a href="tel:0988173131">+251 988-173131</a></h4>
-                        <h4>Telegram: <a href="https://t.me/harly_resins" target="_blank" rel="noreferrer">t.me/harly_resins</a></h4>
-                        <h4>Instagram: <a href="https://www.instagram.com/harly_resin/profile" target="_blank" rel="noreferrer">@harly_resin</a></h4>
-                        <h4>Email: <a href="mailto:harlyresins@gmail.com">harlyresins@gmail.com</a></h4>
+                        <h4>Call Us - <a href="tel:0988173131">+251 988-173131</a></h4>
+                        <h4>Telegram - <a href="https://t.me/harly_resins" target="_blank" rel="noreferrer">t.me/harly_resins</a></h4>
+                        <h4>Instagram - <a href="https://www.instagram.com/harly_resin/" target="_blank" rel="noreferrer">@harly_resin</a></h4>
+                        <h4>Email -  <a href="mailto:harlyresins@gmail.com">harlyresins@gmail.com</a></h4>
                     </div>
                 </section>
 
-                {/* FAQ SECTION */}
+                {/* 3. FAQ SECTION */}
                 <section className="faq-section mt-2">
-                    <h1 className="text-center">Frequently Asked Questions</h1>
+                    <h2 className="section-title">Frequently Asked Questions</h2>
                     <div className="cards-row">
                         <div className="faq-cards card-element">
                             <h3>Q: Do you take custom orders?</h3>
-                            <p>Yes, we do! You can customize colors, styles, and details.</p>
+                            <p>Yes! You can customize colors, styles, and details.</p>
                         </div>
                         <div className="faq-cards card-element">
                             <h3>Q: How long does it take?</h3>
-                            <p>Most custom pieces take 3-5 business days to cure properly.</p>
+                            <p>Most pieces take 3-5 business days to cure properly.</p>
                         </div>
                         <div className="faq-cards card-element">
                             <h3>Q: Do I need to prepay?</h3>
-                            <p>Yes, we require a 50% prepayment to start your custom order.</p>
+                            <p>Yes, a 50% prepayment is required to confirm your order.</p>
                         </div>
                     </div>
                 </section>
 
-                {/* ORDER FORM */}
+
                 <section className="custom-order mt-2 mb-2">
-                    <h2 className="text-center">Place an Order or Send a Comment</h2>
+                    <h2 className="section-title">Contact Form</h2>
 
                     {!submitted ? (
-                        <form
-                            action="https://formsubmit.co/harlyresins@gmail.com"
-                            method="POST"
-                            className="order-form"
-                            enctype="multipart/form-data"
-                        >
-                            <label>Enter Your Name</label>
-                            <input type="text" name="name" required />
+                        <form onSubmit={handleSubmit} className="order-form shadow-light">
+                            <input type="hidden" name="_captcha" value="false" />
 
-                            <label>Phone Number</label>
-                            <input type="tel" name="phone" required />
+                            <div className="form-group">
+                                <label>Full Name</label>
+                                <input type="text" name="name" className="form-input" required />
+                            </div>
 
-                            <label>What product would you like?</label>
-                            <select name="product" required>
-                                <option value="">-- Select a Product --</option>
-                                <option value="keychain">Keychain</option>
-                                <option value="bookmark">Bookmark</option>
-                                <option value="tray">Tray</option>
-                                <option value="phone-stand">Phone Stand</option>
-                                <option value="custom">Other</option>
-                            </select>
+                            <div className="form-group">
+                                <label>Phone Number</label>
+                                <input type="tel" name="phone" className="form-input" required />
+                            </div>
 
-                            <label>Design Details or Comments</label>
-                            <textarea name="details" rows="5" placeholder="Add your details here..." required></textarea>
+                            <div className="form-group">
+                                <label>Interested In</label>
+                                <select name="product" className="form-input" required>
+                                    <option value="">-- Select a Product --</option>
+                                    <option value="keychain">Keychain</option>
+                                    <option value="bookmark">Bookmark</option>
+                                    <option value="phone-stand">Phone Stand</option>
+                                    <option value="custom">Other</option>
+                                </select>
+                            </div>
 
-                            <label>Upload Reference Image (optional)</label>
-                            <input type="file" name="file" accept="image/*" />
+                            <div className="form-group">
+                                <label>Message</label>
+                                <textarea name="message" className="form-input" rows="4" required></textarea>
+                            </div>
 
-                            <p className="prepay-note"><strong>Note:</strong> A 50% prepayment is required to confirm your order.</p>
-                            <button type="submit" className="submit-btn">Send Email</button>
+                            <button type="submit" className="confirm-btn w-100" disabled={isSubmitting}>
+                                {isSubmitting ? "Sending..." : "Send Message"}
+                            </button>
                         </form>
                     ) : (
-                        <div className="form-success text-center">
-                            <h2>Thank you!</h2>
-                            <p>Your message has been sent. We will contact you soon!</p>
-                            <button onClick={() => setSubmitted(false)}>Send another message</button>
+                        <div className="text-center fade-in">
+                            <h3>Message Sent!</h3>
+                            <p>We will get back to you shortly.</p>
+                            <button className="view-all-btn" onClick={() => setSubmitted(false)}>Send Another</button>
                         </div>
                     )}
                 </section>

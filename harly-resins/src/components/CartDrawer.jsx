@@ -1,69 +1,70 @@
-import React, { useState } from 'react'; // Added useState
+import React, { useState } from 'react';
 import { useCart } from '../context/CartContext';
-import CheckoutForm from './CheckoutForm'; // Make sure this file exists in components
+import CheckoutForm from './CheckoutForm';
 
 const CartDrawer = ({ isOpen, onClose }) => {
-    const { cart, addToCart,decreaseQuantity ,removeFromCart, total } = useCart();
-    const [ step, setStep ] = useState('cart'); // Tracks if we are at 'cart' or 'checkout'
+    const { cart, addToCart, decreaseQuantity, total } = useCart();
+    const [ step, setStep ] = useState('cart');
 
-    // Reset to cart view whenever drawer is closed
     const handleClose = () => {
         setStep('cart');
         onClose();
     };
 
     return (
-        <div className={`cart-drawer ${isOpen ? "open" : ""}`}>
-            <div className="cart-header">
-                <h2>{step === 'cart' ? 'Your Bag' : 'Shipping'}</h2>
-                <button className="close-btn" onClick={handleClose}>✕</button>
-            </div>
+        <>
 
-            <div className="cart-body">
-                {step === 'cart' ? (
-                    <>
-                        {cart.length === 0 ? (
-                            <p className="empty-msg">Your bag is empty. Let's add some charms!</p>
-                        ) : (
-                            cart.map((item) => (
-                                <div key={item.id} className="cart-item">
-                                    <img src={item.image} alt={item.name} />
-                                    <div className="item-details">
-                                        <h4>{item.name}</h4>
-                                        <p>{item.price} ETB x {item.quantity}</p>
-                                        <div className="qty-controls">
-                                            <button onClick={() => decreaseQuantity(item.id)}>-</button>
+            {isOpen && <div className="filter-overlay" onClick={handleClose}></div>}
 
-                                            <span>{item.quantity}</span>
-                                            <button onClick={() => addToCart(item)}>+</button>
+            <div className={`cart-drawer ${isOpen ? "open" : ""}`}>
+                <div className="cart-header">
+                    <h2>{step === 'cart' ? 'Your Bag' : 'Shipping'}</h2>
+
+                    <button className="close-panel-btn" onClick={handleClose}>✕</button>
+                </div>
+
+                <div className="cart-body">
+                    {step === 'cart' ? (
+                        <>
+                            {cart.length === 0 ? (
+                                <div className="text-center mt-2">
+                                    <p className="footer-text">Your bag is empty. Let's add some charms!</p>
+                                </div>
+                            ) : (
+                                cart.map((item) => (
+                                    <div key={item._id || item.id} className="cart-item">
+                                        <img src={item.image} alt={item.name} />
+                                        <div className="item-details" style={{ textAlign: 'left', flex: 1 }}>
+                                            <h4 style={{ color: 'var(--primary-green)' }}>{item.name}</h4>
+                                            <p>{item.price} ETB</p>
+                                            <div className="qty-controls">
+                                                <button onClick={() => decreaseQuantity(item._id || item.id)}>-</button>
+                                                <span>{item.quantity}</span>
+                                                <button onClick={() => addToCart(item)}>+</button>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            ))
-                        )}
-                    </>
-                ) : (
-                    /* Show the form when step is 'checkout' */
-                    <CheckoutForm onCancel={() => setStep('cart')} />
+                                ))
+                            )}
+                        </>
+                    ) : (
+                        <CheckoutForm onCancel={() => setStep('cart')} />
+                    )}
+                </div>
+
+                {step === 'cart' && cart.length > 0 && (
+                    <div className="cart-footer">
+                        <div className="total-row" style={{ display: 'flex', justifyContent: 'space-between', fontWeight: 'bold', fontSize: '1.2rem', marginBottom: '15px' }}>
+                            <span>Total:</span>
+                            <span>{total.toLocaleString()} ETB</span>
+                        </div>
+                        <button className="checkout-btn" onClick={() => setStep('checkout')}>
+                            Proceed to Checkout
+                        </button>
+                    </div>
                 )}
             </div>
-
-            {/* Only show footer if we are on the 'cart' step and have items */}
-            {step === 'cart' && cart.length > 0 && (
-                <div className="cart-footer">
-                    <div className="total-row">
-                        <span>Total:</span>
-                        <span>{total.toLocaleString()} ETB</span>
-                    </div>
-                    <button
-                        className="checkout-btn"
-                        onClick={() => setStep('checkout')}
-                    >
-                        Proceed to Shipping
-                    </button>
-                </div>
-            )}
-        </div>
+        </>
     );
 };
 

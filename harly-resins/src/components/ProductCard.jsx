@@ -2,33 +2,43 @@ import React from 'react';
 import { useCart } from "../context/CartContext";
 
 export default function ProductCard({ product }) {
+
   if (!product) return null;
 
-  // Connect to the cart "brain"
   const { addToCart } = useCart();
 
   return (
-    <div className="product-card">
-      <img
-        src={product.image}
-        alt={product.name || "Resin Product"}
-        loading="lazy"
-      />
+    <div className="product-card fadeIn">
+      <div className="product-image-container">
+        <img
+          src={product.image}
+          alt={product.name || "Harly Resin Product"}
+          loading="lazy"
+        />
+      </div>
 
-      <div className="description">
-        {/* Product Code */}
-        <h4>Product Code: {product.code}</h4>
+      <div className="product-info">
+        <span className="product-category">Code: {product.code}</span>
 
-        {/* The description text */}
-        <p>{product.description}</p>
 
-        {/* Price and Add to Cart Action */}
-        <div className="product-card-footer">
-          {product.price && <h4 className="product-price">{product.price}</h4>}
+        <h3 className="home-card-title">{product.category || "Resin Art"}</h3>
+
+        <p className="home-card-desc">{product.description}</p>
+
+        <div className="product-card-footer" style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          marginTop: '15px'
+        }}>
+          <span className="product-price">
+            {product.price ? `${product.price} ETB` : "Enquire for Price"}
+          </span>
 
           <button
             className="add-to-cart-btn"
             onClick={() => addToCart(product)}
+            aria-label={`Add ${product.name} to cart`}
           >
             Add to Cart
           </button>

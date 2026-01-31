@@ -1,15 +1,14 @@
 import React, { useState } from "react";
+import Hero from "../components/Hero"; // Use our high-quality Hero
 import CategoryFilter from "../components/CategoryFilter";
 import ProductCard from "../components/ProductCard";
 import FilterPanel from "../components/FilterPanel";
 import "../styles/global.css";
 
 export default function Catalog({ products, onFilter, loading }) {
-  // 1. STATE MANAGEMENT
   const [ selectedCategory, setSelectedCategory ] = useState("all");
   const [ showFilter, setShowFilter ] = useState(false);
 
-  // These are the active attributes sent to the database
   const [ filters, setFilters ] = useState({
     color: [],
     flake: [],
@@ -19,11 +18,10 @@ export default function Catalog({ products, onFilter, loading }) {
     handle: []
   });
 
-  // 2. FILTER HANDLER (The Bridge to your Backend)
+  // 2. FILTER HANDLER (Syncs UI state to Parent/Backend)
   const applyFiltersToBackend = (updatedFilters, category = selectedCategory) => {
     const criteria = {
       category: category,
-      // We send the first item in the array or "All" if empty
       color: updatedFilters.color[ 0 ] || "All",
       flake: updatedFilters.flake[ 0 ] || "All",
       glitter: updatedFilters.glitter[ 0 ] || "All",
@@ -31,8 +29,6 @@ export default function Catalog({ products, onFilter, loading }) {
       tassle: updatedFilters.tassle[ 0 ] || "All",
       handle: updatedFilters.handle[ 0 ] || "All"
     };
-
-    console.log("🚀 Syncing with Database:", criteria);
     onFilter(criteria);
   };
 
@@ -40,94 +36,90 @@ export default function Catalog({ products, onFilter, loading }) {
   const handleCategoryChange = (cat) => {
     setSelectedCategory(cat);
 
-    // Reset specific attributes when switching categories (e.g., don't search for a keychain chain in kitchenware)
+    // Reset category-specific logic
     const resetAttributes = {
-      ...filters,
-      chain: [],
-      tassle: [],
-      handle: []
+      color: [], flake: [], glitter: [],
+      chain: [], tassle: [], handle: []
     };
     setFilters(resetAttributes);
 
+    // Immediate fetch for new category
     onFilter({
       category: cat,
-      color: "All",
-      flake: "All",
-      glitter: "All",
-      chain: "All",
-      tassle: "All",
-      handle: "All"
+      color: "All", flake: "All", glitter: "All",
+      chain: "All", tassle: "All", handle: "All"
     });
-
   };
 
   return (
-    <div className="catalog-page">
-      {/* HERO SECTION */}
-      <section className="hero-section">
-        <h1>Product Catalog</h1>
-        <p>A little charm for your daily vibe</p>
-      </section>
-
-      {/* INTRO TEXT */}
-      <div className="catalog-intro">
-        <h1>Our Resin Collection</h1>
-        <p>
-          Explore our curated collection of handmade resin pieces, crafted with care and
-          designed to match every style. Each item is made individually with high-quality
-          materials and attention to detail.
-        </p>
-      </div>
-
-      {/* TOP NAVIGATION (Categories) */}
-      <CategoryFilter
-        selectedCategory={selectedCategory}
-        onCategoryChange={handleCategoryChange}
+    <div className="catalog-page-container">
+      {/* 1. REUSABLE HERO */}
+      <Hero
+        title="Our Collection"
+        subtitle="Handcrafted pieces designed for your aesthetic."
+        showBtn={false}
       />
 
-      {/* FILTER BUTTON (Opens the Side Panel) */}
-      <div className="filter-controls">
-        <button className="filter-toggle" onClick={() => setShowFilter(true)}>
-          <span className="filter-icon"></span> FILTER {selectedCategory !== "all" ? selectedCategory.toUpperCase() : ""}
-        </button>
+      <div className="container">
+        {/* 2. INTRO DESCRIPTION */}
+        <section className="catalog-intro text-center mt-2">
+          <p className="description-text">
+            Explore our curated selection of handmade resin pieces.
+            Each item is made individually with high-quality materials and gold-leaf attention to detail.
+          </p>
+        </section>
+
+        {/* 3. CATEGORY NAVIGATION */}
+        <CategoryFilter
+          selectedCategory={selectedCategory}
+          onCategoryChange={handleCategoryChange}
+        />
+
+        {/* 4. FILTER TOGGLE */}
+        <div className="filter-controls">
+          <button className="filter-toggle-btn" onClick={() => setShowFilter(true)}>
+            <i className="filter-icon">⚙️</i>
+            FILTER {selectedCategory !== "all" ? `: ${selectedCategory.toUpperCase()}` : ""}
+          </button>
+        </div>
+
+        {/* 5. SLIDE-OUT PANEL */}
+        <FilterPanel
+          show={showFilter}
+          onClose={() => setShowFilter(false)}
+          filters={filters}
+          setFilters={setFilters}
+          selectedCategory={selectedCategory}
+          onApplyFilters={(newFilters) => applyFiltersToBackend(newFilters)}
+        />
+
+        {/* 6. DYNAMIC GRID */}
+        {loading ? (
+          <div className="loading-state">
+            <div className="spinner"></div>
+            <p>Polishing the resin...</p>
+          </div>
+        ) : (
+          <div className="product-grid fade-in">
+            {products && products.length > 0 ? (
+              products.map(item => (
+                <ProductCard key={item._id || item.id} product={item} />
+              ))
+            ) : (
+              <div className="no-results-box">
+                <h3>No Products Found</h3>
+                <p>Try adjusting your filters or search for something else.</p>
+                <button
+                  className="view-all-btn"
+                  onClick={() => handleCategoryChange("all")}
+                >
+                  Clear All Filters
+                </button>
+              </div>
+            )}
+          </div>
+        )}
       </div>
-
-      {/* THE SLIDE-OUT PANEL (Your FilterPanel.jsx file) */}
-      <FilterPanel
-        show={showFilter}
-        onClose={() => setShowFilter(false)}
-        filters={filters}
-        setFilters={setFilters}
-        selectedCategory={selectedCategory}
-        onApplyFilters={(newFilters) => applyFiltersToBackend(newFilters)}
-      />
-
-      {/* THE PRODUCT GRID */}
-      {loading ? (
-        <div className="loading-container">
-          <div className="spinner"></div>
-          <p>Finding your items...</p>
-        </div>
-      ) : (
-        <div className="product-grid">
-          {products && products.length > 0 ? (
-            products.map(item => (
-              <ProductCard key={item._id || item.id} product={item} />
-            ))
-          ) : (
-            <div className="no-results">
-              <h3>No matching items</h3>
-              <p>Try resetting your filters to see more products.</p>
-              <button
-                className="view-all-btn"
-                onClick={() => handleCategoryChange("all")} // This resets everything
-              >
-                View All Products
-              </button>
-            </div>
-          )}
-        </div>
-      )}
     </div>
   );
 }
