@@ -9,13 +9,13 @@ async function seedDB() {
 
     try {
         await mongoose.connect(dbURI);
-        console.log("🌱 Connected to MongoDB — starting seeding…");
+        console.log("Connected to MongoDB — starting seeding…");
 
         const deleteCount = await Product.deleteMany({});
-        console.log(`🗑️ Removed ${deleteCount.deletedCount} old products`);
+        console.log(`Removed ${deleteCount.deletedCount} old products`);
 
         await Product.insertMany(products);
-        console.log(`✅ ${products.length} Products inserted successfully!`);
+        console.log(`${products.length} Products inserted successfully!`);
 
 
         await mongoose.connection.close();
@@ -23,7 +23,7 @@ async function seedDB() {
 
         process.exit(0);
     } catch (error) {
-        console.error("❌ Seed Error:", error.message);
+        console.error("Seed Error:", error.message);
         process.exit(1);
     }
 }
